@@ -1,0 +1,27 @@
+{
+	"name": "Block E",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 198456090694735
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 431612009971613,
+					"parameters": {
+						"layout": "Overworld_Test"
+					}
+				}
+			],
+			"sid": 497623783232030
+		}
+	],
+	"sid": 725038931265796
+}

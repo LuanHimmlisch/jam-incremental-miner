@@ -1,0 +1,336 @@
+{
+	"name": "Game E",
+	"events": [
+		{
+			"eventType": "include",
+			"includeSheet": "Common"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "Player",
+					"sid": 795510610446186,
+					"parameters": {
+						"object": "Interactable"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 361981204867972,
+					"parameters": {
+						"instance-variable": "interactableUID",
+						"value": "Interactable.UID"
+					}
+				}
+			],
+			"sid": 846293726647457
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 681973876318725
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 486539809689101,
+					"parameters": {
+						"instance-variable": "interactableUID",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 690096300846416
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 775963283711237,
+					"parameters": {
+						"key": 69
+					}
+				}
+			],
+			"actions": [],
+			"sid": 263974077011508,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-by-unique-id",
+							"objectClass": "Interactable",
+							"sid": 465257370446838,
+							"parameters": {
+								"unique-id": "Player.interactableUID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "instance-signal",
+							"objectClass": "Interactable",
+							"sid": 103675978575265,
+							"parameters": {
+								"tag": "\"interact\""
+							}
+						}
+					],
+					"sid": 612567495101420
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 942507257146712,
+					"parameters": {
+						"key": 87
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "simulate-control",
+					"objectClass": "Player",
+					"sid": 170590766064677,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"control": "up"
+					}
+				},
+				{
+					"id": "simulate-control",
+					"objectClass": "Player",
+					"sid": 998195012198870,
+					"behaviorType": "Platform",
+					"parameters": {
+						"control": "jump"
+					}
+				}
+			],
+			"sid": 303068382091444
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 530610484346479,
+					"parameters": {
+						"key": 65
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "simulate-control",
+					"objectClass": "Player",
+					"sid": 200297243283720,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"control": "left"
+					}
+				},
+				{
+					"id": "simulate-control",
+					"objectClass": "Player",
+					"sid": 323143791423607,
+					"behaviorType": "Platform",
+					"parameters": {
+						"control": "left"
+					}
+				}
+			],
+			"sid": 532322406751548
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 290069773104912,
+					"parameters": {
+						"key": 83
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "simulate-control",
+					"objectClass": "Player",
+					"sid": 365281270068466,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"control": "down"
+					}
+				}
+			],
+			"sid": 483917391530084
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 880120962521694,
+					"parameters": {
+						"key": 68
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "simulate-control",
+					"objectClass": "Player",
+					"sid": 401886585162026,
+					"behaviorType": "8Direction",
+					"parameters": {
+						"control": "right"
+					}
+				},
+				{
+					"id": "simulate-control",
+					"objectClass": "Player",
+					"sid": 530620597716767,
+					"behaviorType": "Platform",
+					"parameters": {
+						"control": "right"
+					}
+				}
+			],
+			"sid": 323017872825486
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-click",
+					"objectClass": "Mouse",
+					"sid": 760003747572823,
+					"parameters": {
+						"mouse-button": "left",
+						"click-type": "clicked"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 251920656655671,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "mouseAngle",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 122604749062497
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 343955463006345,
+							"parameters": {
+								"variable": "mouseAngle",
+								"value": "angle(Mouse.X, Mouse.Y, Player.X, Player.Y) - 180"
+							}
+						}
+					],
+					"sid": 524035526038451
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 733539306252418,
+							"parameters": {
+								"object-to-create": "PlayerAttackSlash",
+								"layer": "\"Game\"",
+								"x": "Player.X + cos(mouseAngle) * PlayerGraphic.Width / 2",
+								"y": "Player.Y + clamp(sin(mouseAngle), -1, 0.5) * PlayerGraphic.Height / 2",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "PlayerAttackSlash",
+							"sid": 973034667520448,
+							"parameters": {
+								"angle": "mouseAngle"
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "PlayerAttackSlash",
+							"sid": 355873976731215,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"destroy\"",
+								"property": "offsetOpacity",
+								"end-value": "0",
+								"time": "0.3",
+								"ease": "default",
+								"destroy-on-complete": "yes",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 515889790629025
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "onTimer",
+					"objectClass": "PlayerAttackSlash",
+					"sid": 887582950137126,
+					"behaviorType": "InstanceTimer",
+					"parameters": {
+						"tag": "\"destroy\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "PlayerAttackSlash",
+					"sid": 777484354490656
+				}
+			],
+			"sid": 346295838702657
+		}
+	],
+	"sid": 528897305043425
+}

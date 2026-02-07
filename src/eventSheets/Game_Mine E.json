@@ -1,0 +1,1343 @@
+{
+	"name": "Game_Mine E",
+	"events": [
+		{
+			"eventType": "include",
+			"includeSheet": "Game E"
+		},
+		{
+			"functionName": "Create 2D Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "x",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 758372507638191
+				},
+				{
+					"name": "y",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 755172369849048
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 296888687222686,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 873382293198277,
+							"parameters": {
+								"first-value": "Player.Count",
+								"comparison": 0,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 744274484007539,
+							"parameters": {
+								"object-to-create": "Player",
+								"layer": "\"Game\"",
+								"x": "x",
+								"y": "y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						}
+					],
+					"sid": 123022221961094
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-position",
+							"objectClass": "Player",
+							"sid": 109590828607307,
+							"parameters": {
+								"x": "x",
+								"y": "y"
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 153155712109937,
+							"parameters": {
+								"object-to-create": "PlayerGraphic",
+								"layer": "\"Game\"",
+								"x": "x",
+								"y": "y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 128491354201004,
+							"parameters": {
+								"object-to-create": "Light",
+								"layer": "\"Darkness\"",
+								"x": "PlayerGraphic.ImagePointX(1)",
+								"y": "PlayerGraphic.ImagePointY(1)",
+								"create-hierarchy": false,
+								"template-name": "\"Player\""
+							}
+						},
+						{
+							"id": "add-child",
+							"objectClass": "Player",
+							"sid": 496640568769596,
+							"parameters": {
+								"child": "Light",
+								"transform-x": true,
+								"transform-y": true,
+								"transform-w": false,
+								"transform-h": false,
+								"transform-a": false,
+								"transform-o": false,
+								"transform-z-elevation": true,
+								"transform-visibility": false,
+								"destroy-with-parent": true
+							}
+						},
+						{
+							"id": "add-child",
+							"objectClass": "Player",
+							"sid": 826571593166690,
+							"parameters": {
+								"child": "PlayerGraphic",
+								"transform-x": true,
+								"transform-y": true,
+								"transform-w": false,
+								"transform-h": false,
+								"transform-a": false,
+								"transform-o": false,
+								"transform-z-elevation": true,
+								"transform-visibility": false,
+								"destroy-with-parent": true
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "Player",
+							"sid": 702198731397858,
+							"behaviorType": "Platform",
+							"parameters": {
+								"state": "enabled"
+							}
+						}
+					],
+					"sid": 651112712378621
+				}
+			]
+		},
+		{
+			"functionName": "HasTileAt",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "x",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 639514019249724
+				},
+				{
+					"name": "y",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 968701432569101
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 977846775028437,
+					"parameters": {
+						"value": "Tilemap.TileAt(x, y)"
+					}
+				}
+			],
+			"sid": 365274105551743
+		},
+		{
+			"aceType": "action",
+			"aceName": "Refresh",
+			"objectClass": "DarknessTilemap",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 467170237639500,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "MAX_DISTANCE",
+					"type": "number",
+					"initialValue": "2",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 535088985228032
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 211987988940615,
+							"parameters": {
+								"name": "\"x\"",
+								"start-index": "0",
+								"end-index": "Tilemap.MapDisplayWidth"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 201113626243698,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for",
+									"objectClass": "System",
+									"sid": 579925392149637,
+									"parameters": {
+										"name": "\"y\"",
+										"start-index": "0",
+										"end-index": "Tilemap.MapDisplayHeight"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 454256873923399,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-tile-at",
+											"objectClass": "Tilemap",
+											"sid": 215880201442192,
+											"parameters": {
+												"tile-x": "loopindex(\"x\")",
+												"tile-y": "loopindex(\"y\")",
+												"comparison": 5,
+												"tile": "0"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 306330580215170,
+									"children": [
+										{
+											"eventType": "variable",
+											"name": "found",
+											"type": "boolean",
+											"initialValue": "false",
+											"comment": "",
+											"isStatic": false,
+											"isConstant": false,
+											"sid": 689756909915156
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "for",
+													"objectClass": "System",
+													"sid": 439349759066332,
+													"parameters": {
+														"name": "\"dist\"",
+														"start-index": "1",
+														"end-index": "MAX_DISTANCE"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 506580319866038,
+													"parameters": {
+														"variable": "found",
+														"value": "true"
+													}
+												}
+											],
+											"sid": 929617600955722,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-tile-at",
+															"objectClass": "Tilemap",
+															"sid": 309231378235123,
+															"parameters": {
+																"tile-x": "loopindex(\"x\") + loopindex(\"dist\")",
+																"tile-y": "loopindex(\"y\")",
+																"comparison": 2,
+																"tile": "0"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "stop-loop",
+															"objectClass": "System",
+															"sid": 895419102693681
+														}
+													],
+													"sid": 691204752855874,
+													"children": [
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-two-values",
+																	"objectClass": "System",
+																	"sid": 859735360759516,
+																	"parameters": {
+																		"first-value": "loopindex(\"dist\")",
+																		"comparison": 0,
+																		"second-value": "1"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "erase-tile",
+																	"objectClass": "DarknessTilemap",
+																	"sid": 184980356763351,
+																	"parameters": {
+																		"tile-x": "loopindex(\"x\")",
+																		"tile-y": "loopindex(\"y\")"
+																	}
+																}
+															],
+															"sid": 462605070870831
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "else",
+																	"objectClass": "System",
+																	"sid": 161508023680613
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-tile",
+																	"objectClass": "DarknessTilemap",
+																	"sid": 442179723507547,
+																	"parameters": {
+																		"tile-x": "loopindex(\"x\")",
+																		"tile-y": "loopindex(\"y\")",
+																		"tile": "loopindex(\"dist\") - 2",
+																		"state": "normal"
+																	}
+																}
+															],
+															"sid": 633303954005614
+														}
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "else",
+															"objectClass": "System",
+															"sid": 374285604634518
+														},
+														{
+															"id": "compare-tile-at",
+															"objectClass": "Tilemap",
+															"sid": 157185175027449,
+															"parameters": {
+																"tile-x": "loopindex(\"x\") - loopindex(\"dist\")",
+																"tile-y": "loopindex(\"y\")",
+																"comparison": 2,
+																"tile": "0"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "stop-loop",
+															"objectClass": "System",
+															"sid": 637265419471722
+														}
+													],
+													"sid": 312488607459346,
+													"children": [
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-two-values",
+																	"objectClass": "System",
+																	"sid": 636354192350132,
+																	"parameters": {
+																		"first-value": "loopindex(\"dist\")",
+																		"comparison": 0,
+																		"second-value": "1"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "erase-tile",
+																	"objectClass": "DarknessTilemap",
+																	"sid": 438375279006766,
+																	"parameters": {
+																		"tile-x": "loopindex(\"x\")",
+																		"tile-y": "loopindex(\"y\")"
+																	}
+																}
+															],
+															"sid": 511104058360968
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "else",
+																	"objectClass": "System",
+																	"sid": 522430955469851
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-tile",
+																	"objectClass": "DarknessTilemap",
+																	"sid": 839119839839906,
+																	"parameters": {
+																		"tile-x": "loopindex(\"x\")",
+																		"tile-y": "loopindex(\"y\")",
+																		"tile": "loopindex(\"dist\") - 2",
+																		"state": "normal"
+																	}
+																}
+															],
+															"sid": 241710712854843
+														}
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "else",
+															"objectClass": "System",
+															"sid": 178602687710225
+														},
+														{
+															"id": "compare-tile-at",
+															"objectClass": "Tilemap",
+															"sid": 369805360194998,
+															"parameters": {
+																"tile-x": "loopindex(\"x\")",
+																"tile-y": "loopindex(\"y\") - loopindex(\"dist\")",
+																"comparison": 2,
+																"tile": "0"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "stop-loop",
+															"objectClass": "System",
+															"sid": 618732601679151
+														}
+													],
+													"sid": 464801588651417,
+													"children": [
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-two-values",
+																	"objectClass": "System",
+																	"sid": 943627349119522,
+																	"parameters": {
+																		"first-value": "loopindex(\"dist\")",
+																		"comparison": 0,
+																		"second-value": "1"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "erase-tile",
+																	"objectClass": "DarknessTilemap",
+																	"sid": 142039915876699,
+																	"parameters": {
+																		"tile-x": "loopindex(\"x\")",
+																		"tile-y": "loopindex(\"y\")"
+																	}
+																}
+															],
+															"sid": 344908341617443
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "else",
+																	"objectClass": "System",
+																	"sid": 558560020716128
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-tile",
+																	"objectClass": "DarknessTilemap",
+																	"sid": 840646259717013,
+																	"parameters": {
+																		"tile-x": "loopindex(\"x\")",
+																		"tile-y": "loopindex(\"y\")",
+																		"tile": "loopindex(\"dist\") - 2",
+																		"state": "normal"
+																	}
+																}
+															],
+															"sid": 189360270517535
+														}
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "else",
+															"objectClass": "System",
+															"sid": 830591985151007
+														},
+														{
+															"id": "compare-tile-at",
+															"objectClass": "Tilemap",
+															"sid": 434861931661573,
+															"parameters": {
+																"tile-x": "loopindex(\"x\")",
+																"tile-y": "loopindex(\"y\") + loopindex(\"dist\")",
+																"comparison": 2,
+																"tile": "0"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "stop-loop",
+															"objectClass": "System",
+															"sid": 713939955240473
+														}
+													],
+													"sid": 670602030910794,
+													"children": [
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-two-values",
+																	"objectClass": "System",
+																	"sid": 230257175032693,
+																	"parameters": {
+																		"first-value": "loopindex(\"dist\")",
+																		"comparison": 0,
+																		"second-value": "1"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "erase-tile",
+																	"objectClass": "DarknessTilemap",
+																	"sid": 964211942832692,
+																	"parameters": {
+																		"tile-x": "loopindex(\"x\")",
+																		"tile-y": "loopindex(\"y\")"
+																	}
+																}
+															],
+															"sid": 215724332588214
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "else",
+																	"objectClass": "System",
+																	"sid": 822992008018064
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-tile",
+																	"objectClass": "DarknessTilemap",
+																	"sid": 669381559416056,
+																	"parameters": {
+																		"tile-x": "loopindex(\"x\")",
+																		"tile-y": "loopindex(\"y\")",
+																		"tile": "loopindex(\"dist\") - 2",
+																		"state": "normal"
+																	}
+																}
+															],
+															"sid": 583591149320024
+														}
+													]
+												},
+												{
+													"eventType": "comment",
+													"text": "Diagonals"
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "else",
+															"objectClass": "System",
+															"sid": 180729951063415
+														},
+														{
+															"id": "compare-tile-at",
+															"objectClass": "Tilemap",
+															"sid": 886756518995910,
+															"parameters": {
+																"tile-x": "loopindex(\"x\") + loopindex(\"dist\")",
+																"tile-y": "loopindex(\"y\") + loopindex(\"dist\")",
+																"comparison": 2,
+																"tile": "0"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "stop-loop",
+															"objectClass": "System",
+															"sid": 292470435200093
+														}
+													],
+													"sid": 158670482459178,
+													"disabled": true,
+													"children": [
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-two-values",
+																	"objectClass": "System",
+																	"sid": 867433255910129,
+																	"parameters": {
+																		"first-value": "loopindex(\"dist\")",
+																		"comparison": 0,
+																		"second-value": "1"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "erase-tile",
+																	"objectClass": "DarknessTilemap",
+																	"sid": 312595684861042,
+																	"parameters": {
+																		"tile-x": "loopindex(\"x\")",
+																		"tile-y": "loopindex(\"y\")"
+																	}
+																}
+															],
+															"sid": 987261080082738,
+															"disabled": true
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "else",
+																	"objectClass": "System",
+																	"sid": 232849295690150
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-tile",
+																	"objectClass": "DarknessTilemap",
+																	"sid": 492169240929366,
+																	"parameters": {
+																		"tile-x": "loopindex(\"x\")",
+																		"tile-y": "loopindex(\"y\")",
+																		"tile": "loopindex(\"dist\") - 2",
+																		"state": "normal"
+																	}
+																}
+															],
+															"sid": 598548282883700,
+															"disabled": true
+														}
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "else",
+															"objectClass": "System",
+															"sid": 274443354596312
+														},
+														{
+															"id": "compare-tile-at",
+															"objectClass": "Tilemap",
+															"sid": 387152059442450,
+															"parameters": {
+																"tile-x": "loopindex(\"x\") - loopindex(\"dist\")",
+																"tile-y": "loopindex(\"y\") + loopindex(\"dist\")",
+																"comparison": 2,
+																"tile": "0"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "stop-loop",
+															"objectClass": "System",
+															"sid": 810441007726590
+														}
+													],
+													"sid": 955950833807281,
+													"disabled": true,
+													"children": [
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-two-values",
+																	"objectClass": "System",
+																	"sid": 868933599058688,
+																	"parameters": {
+																		"first-value": "loopindex(\"dist\")",
+																		"comparison": 0,
+																		"second-value": "1"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "erase-tile",
+																	"objectClass": "DarknessTilemap",
+																	"sid": 907237442106582,
+																	"parameters": {
+																		"tile-x": "loopindex(\"x\")",
+																		"tile-y": "loopindex(\"y\")"
+																	}
+																}
+															],
+															"sid": 809208004646679,
+															"disabled": true
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "else",
+																	"objectClass": "System",
+																	"sid": 883079048416700
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-tile",
+																	"objectClass": "DarknessTilemap",
+																	"sid": 552104649142820,
+																	"parameters": {
+																		"tile-x": "loopindex(\"x\")",
+																		"tile-y": "loopindex(\"y\")",
+																		"tile": "loopindex(\"dist\") - 2",
+																		"state": "normal"
+																	}
+																}
+															],
+															"sid": 998760639966298,
+															"disabled": true
+														}
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "else",
+															"objectClass": "System",
+															"sid": 976461117448316
+														},
+														{
+															"id": "compare-tile-at",
+															"objectClass": "Tilemap",
+															"sid": 224277644862238,
+															"parameters": {
+																"tile-x": "loopindex(\"x\") + loopindex(\"dist\")",
+																"tile-y": "loopindex(\"y\") - loopindex(\"dist\")",
+																"comparison": 2,
+																"tile": "0"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "stop-loop",
+															"objectClass": "System",
+															"sid": 189392363472295
+														}
+													],
+													"sid": 220661652319937,
+													"disabled": true,
+													"children": [
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-two-values",
+																	"objectClass": "System",
+																	"sid": 962310532612609,
+																	"parameters": {
+																		"first-value": "loopindex(\"dist\")",
+																		"comparison": 0,
+																		"second-value": "1"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "erase-tile",
+																	"objectClass": "DarknessTilemap",
+																	"sid": 379739923226466,
+																	"parameters": {
+																		"tile-x": "loopindex(\"x\")",
+																		"tile-y": "loopindex(\"y\")"
+																	}
+																}
+															],
+															"sid": 609638938495691,
+															"disabled": true
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "else",
+																	"objectClass": "System",
+																	"sid": 966794990410167
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-tile",
+																	"objectClass": "DarknessTilemap",
+																	"sid": 605585517237093,
+																	"parameters": {
+																		"tile-x": "loopindex(\"x\")",
+																		"tile-y": "loopindex(\"y\")",
+																		"tile": "loopindex(\"dist\") - 2",
+																		"state": "normal"
+																	}
+																}
+															],
+															"sid": 336834984715270,
+															"disabled": true
+														}
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "else",
+															"objectClass": "System",
+															"sid": 358446633943909
+														},
+														{
+															"id": "compare-tile-at",
+															"objectClass": "Tilemap",
+															"sid": 290053028409379,
+															"parameters": {
+																"tile-x": "loopindex(\"x\") - loopindex(\"dist\")",
+																"tile-y": "loopindex(\"y\") - loopindex(\"dist\")",
+																"comparison": 2,
+																"tile": "0"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "stop-loop",
+															"objectClass": "System",
+															"sid": 743926264032783
+														}
+													],
+													"sid": 989783456541266,
+													"disabled": true,
+													"children": [
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "compare-two-values",
+																	"objectClass": "System",
+																	"sid": 563970516896255,
+																	"parameters": {
+																		"first-value": "loopindex(\"dist\")",
+																		"comparison": 0,
+																		"second-value": "1"
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "erase-tile",
+																	"objectClass": "DarknessTilemap",
+																	"sid": 900854142974260,
+																	"parameters": {
+																		"tile-x": "loopindex(\"x\")",
+																		"tile-y": "loopindex(\"y\")"
+																	}
+																}
+															],
+															"sid": 902722589417194,
+															"disabled": true
+														},
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "else",
+																	"objectClass": "System",
+																	"sid": 164028704287263
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-tile",
+																	"objectClass": "DarknessTilemap",
+																	"sid": 636004644023624,
+																	"parameters": {
+																		"tile-x": "loopindex(\"x\")",
+																		"tile-y": "loopindex(\"y\")",
+																		"tile": "loopindex(\"dist\") - 2",
+																		"state": "normal"
+																	}
+																}
+															],
+															"sid": 610166783397384,
+															"disabled": true
+														}
+													]
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "else",
+															"objectClass": "System",
+															"sid": 587671971292551
+														}
+													],
+													"actions": [
+														{
+															"id": "set-boolean-eventvar",
+															"objectClass": "System",
+															"sid": 420104612830804,
+															"parameters": {
+																"variable": "found",
+																"value": "false"
+															}
+														}
+													],
+													"sid": 719152534078422
+												}
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 557935733932773,
+													"parameters": {
+														"variable": "found"
+													},
+													"isInverted": true
+												}
+											],
+											"actions": [
+												{
+													"id": "set-tile",
+													"objectClass": "DarknessTilemap",
+													"sid": 783173108941852,
+													"parameters": {
+														"tile-x": "loopindex(\"x\")",
+														"tile-y": "loopindex(\"y\")",
+														"tile": "1",
+														"state": "normal"
+													}
+												}
+											],
+											"sid": 459048236552421
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 543443527052461
+										}
+									],
+									"actions": [
+										{
+											"id": "erase-tile",
+											"objectClass": "DarknessTilemap",
+											"sid": 502317041859989,
+											"parameters": {
+												"tile-x": "loopindex(\"x\")",
+												"tile-y": "loopindex(\"y\")"
+											}
+										}
+									],
+									"sid": 592014046058351
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 208738129105333
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "Create 2D Player",
+					"sid": 319538779533533,
+					"parameters": [
+						"Player.X",
+						"Player.Y"
+					]
+				},
+				{
+					"id": "set-layout-scale",
+					"objectClass": "System",
+					"sid": 686864376510626,
+					"parameters": {
+						"scale": "0.33"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 380796325712416,
+					"parameters": {
+						"object-to-create": "DarknessTilemap",
+						"layer": "\"Game\"",
+						"x": "Tilemap.X",
+						"y": "Tilemap.Y",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-size",
+					"objectClass": "DarknessTilemap",
+					"sid": 695378548446046,
+					"parameters": {
+						"width": "Tilemap.Width",
+						"height": "Tilemap.Height"
+					}
+				},
+				{
+					"customAction": "Refresh",
+					"objectClass": "DarknessTilemap",
+					"sid": 291900900228022
+				}
+			],
+			"sid": 166041054666914
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 886376103359676
+				}
+			],
+			"actions": [
+				{
+					"id": "scroll-to-object",
+					"objectClass": "System",
+					"sid": 651058685316897,
+					"parameters": {
+						"object": "Player"
+					}
+				}
+			],
+			"sid": 544802991966155
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "PlayerAttackSlash",
+					"sid": 579123598707577,
+					"parameters": {
+						"object": "Tilemap"
+					}
+				},
+				{
+					"id": "isTimerRunning",
+					"objectClass": "PlayerAttackSlash",
+					"sid": 638277041332480,
+					"behaviorType": "InstanceTimer",
+					"parameters": {
+						"tag": "\"destroy\""
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [],
+			"sid": 218262824261530,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "nextID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 330607686412807
+				},
+				{
+					"eventType": "variable",
+					"name": "tileX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 368534508875233
+				},
+				{
+					"eventType": "variable",
+					"name": "tileY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 232375178365296
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 104936530082811,
+							"parameters": {
+								"variable": "tileX",
+								"value": "Tilemap.PositionToTileX(PlayerAttackSlash.X)"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 601468198547970,
+							"parameters": {
+								"variable": "tileY",
+								"value": "Tilemap.PositionToTileY(PlayerAttackSlash.Y)"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 761146563169897,
+							"parameters": {
+								"variable": "nextID",
+								"value": "Tilemap.TileAt(tileX,  tileY) + 1"
+							}
+						}
+					],
+					"sid": 450696484250400
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-overlapping-point",
+							"objectClass": "System",
+							"sid": 904728142463527,
+							"parameters": {
+								"object": "RockUnbreakeable",
+								"x": "Tilemap.TileToPositionX(tileX)",
+								"y": "Tilemap.TileToPositionY(tileY)"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 374812029169077
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 378106708803349
+						}
+					],
+					"actions": [],
+					"sid": 296142678681953,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 190314603979809,
+									"parameters": {
+										"first-value": "nextID",
+										"comparison": 4,
+										"second-value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "startTimer",
+									"objectClass": "PlayerAttackSlash",
+									"sid": 811722588082799,
+									"behaviorType": "InstanceTimer",
+									"parameters": {
+										"duration": "0.1",
+										"tag": "\"destroy\"",
+										"type": "repeating",
+										"useSystemDt": "object"
+									}
+								}
+							],
+							"sid": 473815080126567,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 335764776303938,
+											"parameters": {
+												"variable": "nextID",
+												"comparison": 2,
+												"value": "4"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-tile",
+											"objectClass": "Tilemap",
+											"sid": 751857099522246,
+											"parameters": {
+												"tile-x": "Tilemap.PositionToTileX(PlayerAttackSlash.X)",
+												"tile-y": "Tilemap.PositionToTileY(PlayerAttackSlash.Y)",
+												"tile": "nextID",
+												"state": "normal"
+											}
+										}
+									],
+									"sid": 124092975608377
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 745097055408059
+										}
+									],
+									"actions": [
+										{
+											"id": "erase-tile",
+											"objectClass": "Tilemap",
+											"sid": 137551376233700,
+											"parameters": {
+												"tile-x": "tileX",
+												"tile-y": "tileY"
+											}
+										},
+										{
+											"customAction": "Refresh",
+											"objectClass": "DarknessTilemap",
+											"sid": 556868095341873
+										}
+									],
+									"sid": 245103270678172
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"sid": 960946321341273
+}

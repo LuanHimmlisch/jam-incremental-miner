@@ -1,0 +1,68 @@
+{
+	"name": "PlayerAttackSlash",
+	"plugin-id": "Sprite",
+	"sid": 501719005747477,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Bullet",
+			"name": "Bullet",
+			"sid": 712120222018134
+		},
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 881566354146919
+		},
+		{
+			"behaviorId": "MasterPose_InstanceTimer",
+			"name": "InstanceTimer",
+			"sid": 742447662708834
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 107,
+						"height": 231,
+						"originX": 0.6635514018691588,
+						"originY": 0.49783549783549785,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 2331021,
+						"collisionPoly": {
+							"points": [
+								0,
+								1,
+								0,
+								0,
+								1,
+								0,
+								1,
+								1
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 117327734564543,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

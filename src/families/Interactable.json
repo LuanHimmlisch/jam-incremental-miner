@@ -1,0 +1,11 @@
+{
+	"name": "Interactable",
+	"plugin-id": "Sprite",
+	"sid": 488063916124518,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"MineHole"
+	]
+}

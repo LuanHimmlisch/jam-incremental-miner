@@ -1,0 +1,625 @@
+{
+	"name": "Game_Overworld E",
+	"events": [
+		{
+			"eventType": "include",
+			"includeSheet": "Game E"
+		},
+		{
+			"eventType": "variable",
+			"name": "LoadLastX",
+			"type": "number",
+			"initialValue": "500",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 862029171663576
+		},
+		{
+			"eventType": "variable",
+			"name": "LoadLastY",
+			"type": "number",
+			"initialValue": "400",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 357729279990993
+		},
+		{
+			"eventType": "variable",
+			"name": "GoToMineUID",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 239808446915181
+		},
+		{
+			"eventType": "variable",
+			"name": "GoToMineProgress",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 782980758052561
+		},
+		{
+			"eventType": "variable",
+			"name": "Camera3DX",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 144811900667545
+		},
+		{
+			"eventType": "variable",
+			"name": "Camera3DY",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 120211050753348
+		},
+		{
+			"eventType": "variable",
+			"name": "Camera3DZ",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 728313131018750
+		},
+		{
+			"eventType": "variable",
+			"name": "Camera3DLookX",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 261708702198880
+		},
+		{
+			"eventType": "variable",
+			"name": "Camera3DLookY",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 285118429742664
+		},
+		{
+			"eventType": "variable",
+			"name": "CameraInstant",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 116113357791191
+		},
+		{
+			"eventType": "variable",
+			"name": "CameraSpeed",
+			"type": "number",
+			"initialValue": "5",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 776864227477228
+		},
+		{
+			"functionName": "Create 3D Player",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "x",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 119910459449948
+				},
+				{
+					"name": "y",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 286850055237262
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 179399159856914,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 149480447250148,
+							"parameters": {
+								"first-value": "PlayerGraphic.Count",
+								"comparison": 0,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 645321570330415,
+							"parameters": {
+								"object-to-create": "PlayerGraphic",
+								"layer": "\"IE\"",
+								"x": "0",
+								"y": "0",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						}
+					],
+					"sid": 356359588414647
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 726118651592487,
+							"parameters": {
+								"object-to-create": "Player",
+								"layer": "\"Game\"",
+								"x": "x",
+								"y": "y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 332100020703315,
+							"parameters": {
+								"object-to-create": "PlayerShape",
+								"layer": "\"Game\"",
+								"x": "x",
+								"y": "y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "add-child",
+							"objectClass": "Player",
+							"sid": 766122906274212,
+							"parameters": {
+								"child": "PlayerShape",
+								"transform-x": true,
+								"transform-y": true,
+								"transform-w": false,
+								"transform-h": false,
+								"transform-a": false,
+								"transform-o": false,
+								"transform-z-elevation": true,
+								"transform-visibility": false,
+								"destroy-with-parent": true
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "Player",
+							"sid": 994919946858765,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"state": "enabled"
+							}
+						}
+					],
+					"sid": 763133628631214
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 648632451130884
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "Create 3D Player",
+					"sid": 320749257109168,
+					"parameters": [
+						"LoadLastX",
+						"LoadLastY"
+					]
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 863851102708026,
+					"parameters": {
+						"variable": "CameraInstant",
+						"value": "true"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 555311259428195,
+					"parameters": {
+						"variable": "GoToMineProgress",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 110406232538357
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 886468932723825
+				}
+			],
+			"actions": [],
+			"sid": 454608374070126,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 300361957924987,
+							"parameters": {
+								"variable": "GoToMineUID",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 431916108552780,
+							"parameters": {
+								"variable": "Camera3DX",
+								"value": "Player.X"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 342292573053352,
+							"parameters": {
+								"variable": "Camera3DY",
+								"value": "Player.Y + 3000"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 347384056521795,
+							"parameters": {
+								"variable": "Camera3DZ",
+								"value": "Player.ZElevation + 1400"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 984318973977905,
+							"parameters": {
+								"variable": "Camera3DLookX",
+								"value": "Player.X"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 101995662049231,
+							"parameters": {
+								"variable": "Camera3DLookY",
+								"value": "Player.Y"
+							}
+						}
+					],
+					"sid": 534966566886772
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 750301534918147
+						},
+						{
+							"id": "pick-by-unique-id",
+							"objectClass": "MineHole",
+							"sid": 702946719038432,
+							"parameters": {
+								"unique-id": "GoToMineUID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-ignoring-input",
+							"objectClass": "Player",
+							"sid": 897950714719457,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"input": "start-ignoring"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 358950077000018,
+							"parameters": {
+								"variable": "Camera3DX",
+								"value": "MineHole.X"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 419362649330935,
+							"parameters": {
+								"variable": "Camera3DY",
+								"value": "MineHole.Y"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 825021746369273,
+							"parameters": {
+								"variable": "Camera3DZ",
+								"value": "MineHole.ZElevation"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 294613122639166,
+							"parameters": {
+								"variable": "Camera3DLookX",
+								"value": "MineHole.X"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 561602986814419,
+							"parameters": {
+								"variable": "Camera3DLookY",
+								"value": "MineHole.Y"
+							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 733486957466457,
+							"parameters": {
+								"variable": "GoToMineProgress",
+								"value": "dt"
+							}
+						}
+					],
+					"sid": 530547953157477,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 747208009024885,
+									"parameters": {
+										"variable": "GoToMineProgress",
+										"comparison": 5,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "go-to-layout",
+									"objectClass": "System",
+									"sid": 271452681864508,
+									"parameters": {
+										"layout": "Mine_Test"
+									}
+								}
+							],
+							"sid": 663759741988492
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 663645616060121,
+							"parameters": {
+								"variable": "CameraInstant"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 761696119886690,
+							"parameters": {
+								"variable": "CameraInstant",
+								"value": "false"
+							}
+						},
+						{
+							"id": "look-at-position",
+							"objectClass": "3DCamera",
+							"sid": 910121927192122,
+							"parameters": {
+								"cam-x": "Camera3DX",
+								"cam-y": "Camera3DY",
+								"cam-z": "Camera3DZ",
+								"look-x": "Camera3DLookX",
+								"look-y": "Camera3DLookY",
+								"look-z": "0",
+								"up-x": "0",
+								"up-y": "0",
+								"up-z": "1"
+							}
+						}
+					],
+					"sid": 524665660226712
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 409997841946062
+						}
+					],
+					"actions": [
+						{
+							"id": "look-at-position",
+							"objectClass": "3DCamera",
+							"sid": 631412928113346,
+							"parameters": {
+								"cam-x": "lerp(Self.CameraX, Camera3DX, CameraSpeed * dt)",
+								"cam-y": "lerp(Self.CameraY, Camera3DY, CameraSpeed * dt)",
+								"cam-z": "lerp(Self.CameraZ, Camera3DZ, CameraSpeed * dt)",
+								"look-x": "lerp(Self.LookX, Camera3DLookX, CameraSpeed * dt)",
+								"look-y": "lerp(Self.LookY, Camera3DLookY, CameraSpeed * dt)",
+								"look-z": "0",
+								"up-x": "0",
+								"up-y": "0",
+								"up-z": "1"
+							}
+						}
+					],
+					"sid": 541687003426989
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "pick-by-unique-id",
+					"objectClass": "Interactable",
+					"sid": 556832993096004,
+					"parameters": {
+						"unique-id": "Player.interactableUID"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-position-to-another-object",
+					"objectClass": "InteractionIconShape",
+					"sid": 114262713598397,
+					"parameters": {
+						"object": "PlayerShape",
+						"image-point-optional": "0"
+					}
+				},
+				{
+					"id": "set-z-elevation",
+					"objectClass": "InteractionIconShape",
+					"sid": 301718611895011,
+					"parameters": {
+						"z": "PlayerShape.ZHeight"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "InteractionIconShape",
+					"sid": 701698964159095,
+					"parameters": {
+						"visibility": "visible"
+					}
+				}
+			],
+			"sid": 744270204761803
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 909342874218879
+				}
+			],
+			"actions": [
+				{
+					"id": "set-visible",
+					"objectClass": "InteractionIconShape",
+					"sid": 532683950463862,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				}
+			],
+			"sid": 516788092801952
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-instance-signal",
+					"objectClass": "MineHole",
+					"sid": 221265701610688,
+					"parameters": {
+						"tag": "\"interact\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 642060552032158,
+					"parameters": {
+						"variable": "GoToMineUID",
+						"value": "MineHole.UID"
+					}
+				}
+			],
+			"sid": 141626963181094
+		}
+	],
+	"sid": 976319093225717
+}
