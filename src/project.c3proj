@@ -135,7 +135,8 @@
 			"PlayerAttackSlash",
 			"Light",
 			"DarknessTilemap",
-			"RockUnbreakeable"
+			"RockUnbreakeable",
+			"PlayerGraphicLeg"
 		],
 		"subfolders": [
 			{
