@@ -249,6 +249,22 @@
 							}
 						},
 						{
+							"id": "set-z-elevation",
+							"objectClass": "PlayerShape",
+							"sid": 469314851705357,
+							"parameters": {
+								"z": "-300"
+							}
+						},
+						{
+							"id": "set-z-elevation",
+							"objectClass": "PlayerLegsShape",
+							"sid": 527049967365259,
+							"parameters": {
+								"z": "-300"
+							}
+						},
+						{
 							"id": "add-child",
 							"objectClass": "Player",
 							"sid": 766122906274212,
@@ -289,6 +305,14 @@
 							"behaviorType": "8Direction",
 							"parameters": {
 								"state": "enabled"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "Player",
+							"sid": 344502568942247,
+							"parameters": {
+								"visibility": "invisible"
 							}
 						}
 					],
@@ -680,6 +704,64 @@
 				}
 			],
 			"sid": 141626963181094
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-mirrored",
+					"objectClass": "PlayerGraphic",
+					"sid": 873579638706819
+				}
+			],
+			"actions": [
+				{
+					"id": "set-width",
+					"objectClass": "PlayerShape",
+					"sid": 756218952938312,
+					"parameters": {
+						"width": "-abs(Self.Width)"
+					}
+				},
+				{
+					"id": "set-width",
+					"objectClass": "PlayerLegsShape",
+					"sid": 118302037138039,
+					"parameters": {
+						"width": "-abs(Self.Width)"
+					}
+				}
+			],
+			"sid": 564369273311402
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 384979677323986
+				}
+			],
+			"actions": [
+				{
+					"id": "set-width",
+					"objectClass": "PlayerShape",
+					"sid": 656577688055311,
+					"parameters": {
+						"width": "abs(Self.Width)"
+					}
+				},
+				{
+					"id": "set-width",
+					"objectClass": "PlayerLegsShape",
+					"sid": 367733826379704,
+					"parameters": {
+						"width": "abs(Self.Width)"
+					}
+				}
+			],
+			"sid": 566661491890942
 		}
 	],
 	"sid": 976319093225717

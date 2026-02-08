@@ -3,7 +3,7 @@
 	"savedWithRelease": 44903,
 	"name": "New project",
 	"runtime": "c3",
-	"useWorker": "auto",
+	"useWorker": "worker",
 	"bundleAddons": false,
 	"usedAddons": [
 		{
@@ -342,9 +342,9 @@
 		"scriptsType": "module",
 		"framerateMode": "vsync",
 		"sampling": "trilinear",
-		"downscaling": "medium",
+		"downscaling": "high",
 		"renderingMode": "auto",
-		"anisotropicFiltering": "auto",
+		"anisotropicFiltering": "2x",
 		"zNear": 1,
 		"zFar": 10000,
 		"maxSpriteSheetSize": 2048,

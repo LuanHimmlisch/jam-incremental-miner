@@ -46,6 +46,18 @@
 			"sid": 596456859460892
 		},
 		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "Player",
+					"sid": 368198674076674
+				}
+			],
+			"actions": [],
+			"sid": 373440563286010
+		},
+		{
 			"functionName": "Create 2D Player",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -318,13 +330,9 @@
 							}
 						},
 						{
-							"id": "move-to-object",
+							"id": "move-to-bottom",
 							"objectClass": "Rope",
-							"sid": 602067735515445,
-							"parameters": {
-								"where": "behind",
-								"object": "PlayerGraphic"
-							}
+							"sid": 328223326652416
 						}
 					],
 					"sid": 670189129802557
