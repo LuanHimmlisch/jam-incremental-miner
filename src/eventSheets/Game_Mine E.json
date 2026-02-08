@@ -1182,6 +1182,14 @@
 									"parameters": {
 										"state": "enabled"
 									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "Player",
+									"sid": 145239373286808,
+									"parameters": {
+										"visibility": "invisible"
+									}
 								}
 							],
 							"sid": 308027157406903
@@ -1382,6 +1390,26 @@
 							"children": [
 								{
 									"eventType": "variable",
+									"name": "posX",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 116333306694148
+								},
+								{
+									"eventType": "variable",
+									"name": "posY",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 164684172528067
+								},
+								{
+									"eventType": "variable",
 									"name": "tileX",
 									"type": "number",
 									"initialValue": "0",
@@ -1427,19 +1455,37 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 839072869389103,
+											"sid": 159206724613642,
 											"parameters": {
-												"variable": "tileX",
-												"value": "Tilemap.PositionToTileX(PlayerAttackSlash.PolyPointXAt(loopindex))"
+												"variable": "posX",
+												"value": "PlayerAttackSlash.PolyPointXAt(loopindex)"
 											}
 										},
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 410001701671949,
+											"sid": 323468546213320,
+											"parameters": {
+												"variable": "posY",
+												"value": "PlayerAttackSlash.PolyPointYAt(loopindex)"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 416992710323829,
+											"parameters": {
+												"variable": "tileX",
+												"value": "Tilemap.PositionToTileX(posX)"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 419555432431334,
 											"parameters": {
 												"variable": "tileY",
-												"value": "Tilemap.PositionToTileY(PlayerAttackSlash.PolyPointYAt(loopindex))"
+												"value": "Tilemap.PositionToTileY(posY)"
 											}
 										},
 										{
@@ -1457,6 +1503,17 @@
 								{
 									"eventType": "block",
 									"conditions": [
+										{
+											"id": "pick-overlapping-point",
+											"objectClass": "System",
+											"sid": 879754761316926,
+											"parameters": {
+												"object": "RockUnbreakeable",
+												"x": "posX",
+												"y": "posY"
+											},
+											"isInverted": true
+										},
 										{
 											"id": "compare-tile-at",
 											"objectClass": "Tilemap",

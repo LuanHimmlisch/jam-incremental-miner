@@ -256,12 +256,11 @@
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "on-click",
+					"id": "mouse-button-is-down",
 					"objectClass": "Mouse",
-					"sid": 760003747572823,
+					"sid": 270729115969580,
 					"parameters": {
-						"mouse-button": "left",
-						"click-type": "clicked"
+						"mouse-button": "left"
 					}
 				},
 				{
