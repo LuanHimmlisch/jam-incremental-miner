@@ -1,5 +1,5 @@
 {
-	"name": "PlayerGraphicLeg",
+	"name": "PlayerGraphicLegs",
 	"plugin-id": "Sprite",
 	"sid": 972719836815266,
 	"isGlobal": false,
@@ -14,13 +14,13 @@
 					{
 						"width": 1011,
 						"height": 983,
-						"originX": 0.42451154529307283,
-						"originY": 0.8677130044843049,
+						"originX": 0.4391691394658754,
+						"originY": 0.6866734486266531,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 5948722,
+						"imageSpriteId": 1813817,
 						"collisionPoly": {
 							"points": [
 								0.4401582591493571,
@@ -70,8 +70,8 @@
 					{
 						"width": 1011,
 						"height": 983,
-						"originX": 0.42451154529307283,
-						"originY": 0.8677130044843049,
+						"originX": 0.4391691394658754,
+						"originY": 0.6866734486266531,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
@@ -113,8 +113,8 @@
 					{
 						"width": 1011,
 						"height": 983,
-						"originX": 0.42451154529307283,
-						"originY": 0.8677130044843049,
+						"originX": 0.4391691394658754,
+						"originY": 0.6866734486266531,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
@@ -159,8 +159,8 @@
 					{
 						"width": 1011,
 						"height": 983,
-						"originX": 0.42451154529307283,
-						"originY": 0.8677130044843049,
+						"originX": 0.4391691394658754,
+						"originY": 0.6866734486266531,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,

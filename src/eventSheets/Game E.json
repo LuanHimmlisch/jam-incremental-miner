@@ -157,6 +157,22 @@
 					"parameters": {
 						"control": "left"
 					}
+				},
+				{
+					"id": "set-mirrored",
+					"objectClass": "PlayerGraphic",
+					"sid": 918560405134491,
+					"parameters": {
+						"state": "not-mirrored"
+					}
+				},
+				{
+					"id": "set-mirrored",
+					"objectClass": "PlayerGraphicLegs",
+					"sid": 983964639208335,
+					"parameters": {
+						"state": "not-mirrored"
+					}
 				}
 			],
 			"sid": 532322406751548
@@ -200,6 +216,22 @@
 			],
 			"actions": [
 				{
+					"id": "set-mirrored",
+					"objectClass": "PlayerGraphic",
+					"sid": 655020835810505,
+					"parameters": {
+						"state": "mirrored"
+					}
+				},
+				{
+					"id": "set-mirrored",
+					"objectClass": "PlayerGraphicLegs",
+					"sid": 744834036263195,
+					"parameters": {
+						"state": "mirrored"
+					}
+				},
+				{
 					"id": "simulate-control",
 					"objectClass": "Player",
 					"sid": 401886585162026,
@@ -231,6 +263,15 @@
 						"mouse-button": "left",
 						"click-type": "clicked"
 					}
+				},
+				{
+					"id": "is-animation-playing",
+					"objectClass": "PlayerGraphic",
+					"sid": 771675568538213,
+					"parameters": {
+						"animation": "\"Attack\""
+					},
+					"isInverted": true
 				}
 			],
 			"actions": [],
@@ -269,11 +310,11 @@
 						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 733539306252418,
+							"sid": 279775789154463,
 							"parameters": {
 								"object-to-create": "PlayerAttackSlash",
 								"layer": "\"Game\"",
-								"x": "Player.X + cos(mouseAngle) * PlayerGraphic.Width / 2",
+								"x": "Player.X - cos(mouseAngle) * PlayerGraphic.Width / 2",
 								"y": "Player.Y + clamp(sin(mouseAngle), -1, 0.5) * PlayerGraphic.Height / 2",
 								"create-hierarchy": false,
 								"template-name": "\"\""
@@ -303,6 +344,15 @@
 								"ping-pong": "no",
 								"repeat-count": "1"
 							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "PlayerGraphic",
+							"sid": 616130808942149,
+							"parameters": {
+								"animation": "\"Attack\"",
+								"from": "beginning"
+							}
 						}
 					],
 					"sid": 515889790629025
@@ -330,6 +380,192 @@
 				}
 			],
 			"sid": 346295838702657
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-animation-finished",
+					"objectClass": "PlayerGraphic",
+					"sid": 524871278137221,
+					"parameters": {
+						"animation": "\"Attack\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "PlayerGraphic",
+					"sid": 148913162141628,
+					"parameters": {
+						"animation": "\"Idle\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 941496116874612
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-jump",
+					"objectClass": "Player",
+					"sid": 939136128067306,
+					"behaviorType": "Platform"
+				},
+				{
+					"id": "on-fall",
+					"objectClass": "Player",
+					"sid": 661808199938891,
+					"behaviorType": "Platform"
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "PlayerGraphicLegs",
+					"sid": 287413298750322,
+					"parameters": {
+						"animation": "\"Jump\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 121159936892801,
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-landed",
+					"objectClass": "Player",
+					"sid": 992808002251752,
+					"behaviorType": "Platform"
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "PlayerGraphicLegs",
+					"sid": 800992729591475,
+					"parameters": {
+						"animation": "\"Idle\"",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 185019890384240
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-moving",
+					"objectClass": "Player",
+					"sid": 211488316302858,
+					"behaviorType": "8Direction"
+				},
+				{
+					"id": "is-moving",
+					"objectClass": "Player",
+					"sid": 911488155533635,
+					"behaviorType": "Platform"
+				}
+			],
+			"actions": [],
+			"sid": 928940355587161,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-on-floor",
+							"objectClass": "Player",
+							"sid": 597319173585798,
+							"behaviorType": "Platform"
+						},
+						{
+							"id": "is-enabled",
+							"objectClass": "Player",
+							"sid": 291877775759669,
+							"behaviorType": "8Direction"
+						}
+					],
+					"actions": [],
+					"sid": 552821514787726,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "PlayerGraphicLegs",
+									"sid": 733449553533332,
+									"parameters": {
+										"animation": "\"Idle\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "PlayerGraphicLegs",
+									"sid": 759046353844128,
+									"parameters": {
+										"animation": "\"Walk\"",
+										"from": "beginning"
+									}
+								}
+							],
+							"sid": 782870041444960
+						}
+					],
+					"isOrBlock": true
+				}
+			],
+			"isOrBlock": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 550427735990274
+				}
+			],
+			"actions": [],
+			"sid": 799270776702034,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "PlayerGraphicLegs",
+							"sid": 962907676015473,
+							"parameters": {
+								"animation": "\"Walk\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "PlayerGraphicLegs",
+							"sid": 753082733452773,
+							"parameters": {
+								"animation": "\"Idle\"",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 763293471574728
+				}
+			]
 		}
 	],
 	"sid": 528897305043425

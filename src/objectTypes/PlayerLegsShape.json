@@ -1,7 +1,7 @@
 {
-	"name": "PlayerShape",
+	"name": "PlayerLegsShape",
 	"plugin-id": "Shape3D",
-	"sid": 108918063818924,
+	"sid": 513391774411720,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
@@ -20,7 +20,7 @@
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 9671274,
+						"imageSpriteId": 9596700,
 						"collisionPoly": {
 							"points": [
 								0,
@@ -46,7 +46,7 @@
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 4470257,
+						"imageSpriteId": 9889190,
 						"collisionPoly": {
 							"points": [
 								0,
@@ -72,7 +72,7 @@
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 8112259,
+						"imageSpriteId": 4144354,
 						"collisionPoly": {
 							"points": [
 								0,
@@ -98,7 +98,7 @@
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 2142927,
+						"imageSpriteId": 2247920,
 						"collisionPoly": {
 							"points": [
 								0,
@@ -124,7 +124,7 @@
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 7937569,
+						"imageSpriteId": 3357327,
 						"collisionPoly": {
 							"points": [
 								0,
@@ -150,7 +150,7 @@
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 7585624,
+						"imageSpriteId": 1055101,
 						"collisionPoly": {
 							"points": [
 								0,
@@ -168,7 +168,7 @@
 						"tag": ""
 					}
 				],
-				"sid": 989803836862283,
+				"sid": 270820160867207,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

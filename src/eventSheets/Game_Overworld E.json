@@ -176,6 +176,37 @@
 				},
 				{
 					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 359390891156772,
+							"parameters": {
+								"first-value": "PlayerGraphicLegs.Count",
+								"comparison": 0,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 755004642349495,
+							"parameters": {
+								"object-to-create": "PlayerGraphicLegs",
+								"layer": "\"IE\"",
+								"x": "0",
+								"y": "0",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						}
+					],
+					"sid": 177509456012323
+				},
+				{
+					"eventType": "block",
 					"conditions": [],
 					"actions": [
 						{
@@ -184,6 +215,19 @@
 							"sid": 726118651592487,
 							"parameters": {
 								"object-to-create": "Player",
+								"layer": "\"Game\"",
+								"x": "x",
+								"y": "y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 549958807633260,
+							"parameters": {
+								"object-to-create": "PlayerLegsShape",
 								"layer": "\"Game\"",
 								"x": "x",
 								"y": "y",
@@ -210,6 +254,23 @@
 							"sid": 766122906274212,
 							"parameters": {
 								"child": "PlayerShape",
+								"transform-x": true,
+								"transform-y": true,
+								"transform-w": false,
+								"transform-h": false,
+								"transform-a": false,
+								"transform-o": false,
+								"transform-z-elevation": true,
+								"transform-visibility": false,
+								"destroy-with-parent": true
+							}
+						},
+						{
+							"id": "add-child",
+							"objectClass": "Player",
+							"sid": 702277599321872,
+							"parameters": {
+								"child": "PlayerLegsShape",
 								"transform-x": true,
 								"transform-y": true,
 								"transform-w": false,

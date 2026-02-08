@@ -120,6 +120,19 @@
 						{
 							"id": "create-object",
 							"objectClass": "System",
+							"sid": 571705704238528,
+							"parameters": {
+								"object-to-create": "PlayerGraphicLegs",
+								"layer": "\"Game\"",
+								"x": "x",
+								"y": "y",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
 							"sid": 153155712109937,
 							"parameters": {
 								"object-to-create": "PlayerGraphic",
@@ -166,6 +179,23 @@
 							"sid": 826571593166690,
 							"parameters": {
 								"child": "PlayerGraphic",
+								"transform-x": true,
+								"transform-y": true,
+								"transform-w": false,
+								"transform-h": false,
+								"transform-a": false,
+								"transform-o": false,
+								"transform-z-elevation": true,
+								"transform-visibility": false,
+								"destroy-with-parent": true
+							}
+						},
+						{
+							"id": "add-child",
+							"objectClass": "Player",
+							"sid": 642829336683002,
+							"parameters": {
+								"child": "PlayerGraphicLegs",
 								"transform-x": true,
 								"transform-y": true,
 								"transform-w": false,

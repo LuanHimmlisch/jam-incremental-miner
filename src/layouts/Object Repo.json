@@ -10,7 +10,7 @@
 					"type": "PlayerShape",
 					"properties": {
 						"shape": "prism",
-						"z-height": 446,
+						"z-height": 983,
 						"initially-visible": true,
 						"face-back": false,
 						"face-front": true,
@@ -39,12 +39,12 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 316,
-						"y": -120,
-						"width": 563,
-						"height": 446,
-						"originX": 0.38898756660746003,
-						"originY": 1,
+						"x": 0,
+						"y": 0,
+						"width": 1011,
+						"height": 983,
+						"originX": 0.4391691394658754,
+						"originY": 0.6866734486266531,
 						"color": [
 							1,
 							1,
@@ -58,7 +58,7 @@
 				{
 					"type": "Player",
 					"properties": {
-						"initially-visible": false,
+						"initially-visible": true,
 						"initial-animation": "Animation 1",
 						"initial-frame": 0,
 						"enable-collisions": true,
@@ -105,8 +105,8 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": -276,
-						"y": -124,
+						"x": 0,
+						"y": 0,
 						"width": 264,
 						"height": 96,
 						"originX": 0.5,
@@ -142,12 +142,12 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": -272,
-						"y": -436,
+						"x": 2368,
+						"y": 672,
 						"width": 1011,
 						"height": 983,
-						"originX": 0.42451154529307283,
-						"originY": 0.8677130044843049,
+						"originX": 0.4391691394658754,
+						"originY": 0.6866734486266531,
 						"color": [
 							1,
 							1,
@@ -199,8 +199,8 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": -224,
-						"y": 100,
+						"x": -928,
+						"y": -864,
 						"width": 107,
 						"height": 231,
 						"originX": 0.6635514018691588,
@@ -376,8 +376,8 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 1292,
-						"y": -380,
+						"x": 1920,
+						"y": -800,
 						"width": 616,
 						"height": 616,
 						"originX": 0.5141509433962265,
@@ -482,8 +482,8 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 260,
-						"y": -768,
+						"x": 800,
+						"y": -928,
 						"width": 312,
 						"height": 16,
 						"originX": 0,
@@ -519,12 +519,98 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 355.5,
-						"y": -556.5,
+						"x": 1536,
+						"y": -928,
 						"width": 66,
 						"height": 66,
 						"originX": 0.5,
 						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "PlayerGraphicLegs",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Idle",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 30,
+					"sid": 485207741960459,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {},
+					"instanceFolderItem": {
+						"sid": 485207741960459,
+						"expanded": true
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 2368,
+						"y": 672,
+						"width": 1011,
+						"height": 983,
+						"originX": 0.4391691394658754,
+						"originY": 0.6866734486266531,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "PlayerLegsShape",
+					"properties": {
+						"shape": "prism",
+						"z-height": 983,
+						"initially-visible": true,
+						"face-back": false,
+						"face-front": true,
+						"face-left": false,
+						"face-right": false,
+						"face-top": false,
+						"face-bottom": true,
+						"back-face-culling": false,
+						"z-tiling-factor": 8,
+						"object-back": -1,
+						"object-front": -1,
+						"object-left": -1,
+						"object-right": -1,
+						"object-top": -1,
+						"object-bottom": 972719836815266
+					},
+					"uid": 31,
+					"sid": 407415979765777,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {},
+					"instanceFolderItem": {
+						"sid": 407415979765777,
+						"expanded": true
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 0,
+						"y": 0,
+						"width": 1011,
+						"height": 983,
+						"originX": 0.4391691394658754,
+						"originY": 0.6866734486266531,
 						"color": [
 							1,
 							1,
