@@ -2490,28 +2490,10 @@
 		},
 		{
 			"eventType": "block",
-			"conditions": [
-				{
-					"id": "is-overlapping-another-object",
-					"objectClass": "PlayerAttackSlash",
-					"sid": 579123598707577,
-					"parameters": {
-						"object": "Tilemap"
-					}
-				},
-				{
-					"id": "isTimerRunning",
-					"objectClass": "PlayerAttackSlash",
-					"sid": 638277041332480,
-					"behaviorType": "InstanceTimer",
-					"parameters": {
-						"tag": "\"destroy\""
-					},
-					"isInverted": true
-				}
-			],
+			"conditions": [],
 			"actions": [],
 			"sid": 218262824261530,
+			"disabled": true,
 			"children": [
 				{
 					"eventType": "variable",
@@ -2546,36 +2528,9 @@
 				{
 					"eventType": "block",
 					"conditions": [],
-					"actions": [
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 104936530082811,
-							"parameters": {
-								"variable": "tileX",
-								"value": "Tilemap.PositionToTileX(PlayerAttackSlash.X)"
-							}
-						},
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 601468198547970,
-							"parameters": {
-								"variable": "tileY",
-								"value": "Tilemap.PositionToTileY(PlayerAttackSlash.Y)"
-							}
-						},
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 761146563169897,
-							"parameters": {
-								"variable": "nextID",
-								"value": "Tilemap.TileAt(tileX,  tileY) + 1"
-							}
-						}
-					],
-					"sid": 450696484250400
+					"actions": [],
+					"sid": 450696484250400,
+					"disabled": true
 				},
 				{
 					"eventType": "block",
@@ -2592,7 +2547,8 @@
 						}
 					],
 					"actions": [],
-					"sid": 374812029169077
+					"sid": 374812029169077,
+					"disabled": true
 				},
 				{
 					"eventType": "block",
@@ -2605,6 +2561,7 @@
 					],
 					"actions": [],
 					"sid": 296142678681953,
+					"disabled": true,
 					"children": [
 						{
 							"eventType": "block",
@@ -2620,21 +2577,9 @@
 									}
 								}
 							],
-							"actions": [
-								{
-									"id": "startTimer",
-									"objectClass": "PlayerAttackSlash",
-									"sid": 811722588082799,
-									"behaviorType": "InstanceTimer",
-									"parameters": {
-										"duration": "0.1",
-										"tag": "\"destroy\"",
-										"type": "repeating",
-										"useSystemDt": "object"
-									}
-								}
-							],
+							"actions": [],
 							"sid": 473815080126567,
+							"disabled": true,
 							"children": [
 								{
 									"eventType": "block",
@@ -2650,20 +2595,9 @@
 											}
 										}
 									],
-									"actions": [
-										{
-											"id": "set-tile",
-											"objectClass": "Tilemap",
-											"sid": 751857099522246,
-											"parameters": {
-												"tile-x": "Tilemap.PositionToTileX(PlayerAttackSlash.X)",
-												"tile-y": "Tilemap.PositionToTileY(PlayerAttackSlash.Y)",
-												"tile": "nextID",
-												"state": "normal"
-											}
-										}
-									],
-									"sid": 124092975608377
+									"actions": [],
+									"sid": 124092975608377,
+									"disabled": true
 								},
 								{
 									"eventType": "block",
@@ -2690,11 +2624,237 @@
 											"sid": 556868095341873
 										}
 									],
-									"sid": 245103270678172
+									"sid": 245103270678172,
+									"disabled": true
 								}
 							]
 						}
 					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-animation-finished",
+					"objectClass": "PlayerAttackSlash",
+					"sid": 449907294928188,
+					"parameters": {
+						"animation": "\"Animation 1\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "PlayerAttackSlash",
+					"sid": 816126436408836
+				}
+			],
+			"sid": 863580743689811
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-animation-frame-changed",
+					"objectClass": "PlayerAttackSlash",
+					"sid": 160805776351623
+				},
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "PlayerAttackSlash",
+					"sid": 154052801659518,
+					"parameters": {
+						"object": "Tilemap"
+					}
+				},
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 710328878038659,
+					"parameters": {
+						"object": "PlayerAttackSlash"
+					}
+				},
+				{
+					"id": "repeat",
+					"objectClass": "System",
+					"sid": 429331444688363,
+					"parameters": {
+						"count": "PlayerAttackSlash.PolyPointCount"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 683542308154230,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "tileX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 238216421543821
+				},
+				{
+					"eventType": "variable",
+					"name": "tileY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 891763787187870
+				},
+				{
+					"eventType": "variable",
+					"name": "nextID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 410006952702296
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 113061090131778,
+							"parameters": {
+								"variable": "tileX",
+								"value": "Tilemap.PositionToTileX(PlayerAttackSlash.PolyPointXAt(loopindex))"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 141724890499644,
+							"parameters": {
+								"variable": "tileY",
+								"value": "Tilemap.PositionToTileY(PlayerAttackSlash.PolyPointYAt(loopindex))"
+							}
+						}
+					],
+					"sid": 378480845282597
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-tile-at",
+							"objectClass": "Tilemap",
+							"sid": 190727891324031,
+							"parameters": {
+								"tile-x": "tileX",
+								"tile-y": "tileY",
+								"comparison": 5,
+								"tile": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 276770177393973,
+							"parameters": {
+								"variable": "nextID",
+								"value": "Tilemap.TileAt(tileX,  tileY) + 1"
+							}
+						}
+					],
+					"sid": 520408327589016,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 359099236495041,
+									"parameters": {
+										"first-value": "nextID",
+										"comparison": 4,
+										"second-value": "0"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 672076864718872,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 453969229624973,
+											"parameters": {
+												"variable": "nextID",
+												"comparison": 2,
+												"value": "4"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-tile",
+											"objectClass": "Tilemap",
+											"sid": 130672346840223,
+											"parameters": {
+												"tile-x": "tileX",
+												"tile-y": "tileY",
+												"tile": "nextID",
+												"state": "normal"
+											}
+										}
+									],
+									"sid": 616619792902321
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 850281032256656
+										}
+									],
+									"actions": [
+										{
+											"id": "erase-tile",
+											"objectClass": "Tilemap",
+											"sid": 721321056649163,
+											"parameters": {
+												"tile-x": "tileX",
+												"tile-y": "tileY"
+											}
+										},
+										{
+											"customAction": "Refresh",
+											"objectClass": "DarknessTilemap",
+											"sid": 589341416054273
+										}
+									],
+									"sid": 485966032620505
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [],
+					"sid": 533222570397885
 				}
 			]
 		}

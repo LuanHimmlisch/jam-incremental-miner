@@ -71,13 +71,6 @@
 		},
 		{
 			"type": "behavior",
-			"id": "Bullet",
-			"name": "Bullet",
-			"author": "Scirra",
-			"bundled": false
-		},
-		{
-			"type": "behavior",
 			"id": "EightDir",
 			"name": "8 Direction",
 			"author": "Scirra",
@@ -92,24 +85,8 @@
 		},
 		{
 			"type": "behavior",
-			"id": "MasterPose_InstanceTimer",
-			"name": "Instance Timer",
-			"author": "Master Pose",
-			"bundled": false,
-			"version": "1.0.0",
-			"sdkVersion": 2
-		},
-		{
-			"type": "behavior",
 			"id": "Platform",
 			"name": "Platform",
-			"author": "Scirra",
-			"bundled": false
-		},
-		{
-			"type": "behavior",
-			"id": "Tween",
-			"name": "Tween",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -146,7 +123,6 @@
 			"InteractionIconShape",
 			"PlayerGraphic",
 			"Tilemap",
-			"PlayerAttackSlash",
 			"Light",
 			"DarknessTilemap",
 			"RockUnbreakeable",
@@ -155,7 +131,8 @@
 			"ArrayTemp",
 			"debug",
 			"PlayerGraphicLegs",
-			"PlayerLegsShape"
+			"PlayerLegsShape",
+			"PlayerAttackSlash"
 		],
 		"subfolders": [
 			{

@@ -335,7 +335,7 @@
 			"instances": [],
 			"sid": 112459445116394,
 			"effectTypes": [],
-			"isInitiallyVisible": true,
+			"isInitiallyVisible": false,
 			"isInitiallyInteractive": true,
 			"isHTMLElementsLayer": false,
 			"color": [

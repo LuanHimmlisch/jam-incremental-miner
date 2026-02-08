@@ -274,7 +274,17 @@
 					"isInverted": true
 				}
 			],
-			"actions": [],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "PlayerGraphic",
+					"sid": 543166219414441,
+					"parameters": {
+						"animation": "\"Attack\"",
+						"from": "beginning"
+					}
+				}
+			],
 			"sid": 251920656655671,
 			"children": [
 				{
@@ -310,76 +320,81 @@
 						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 279775789154463,
+							"sid": 467627608048030,
 							"parameters": {
 								"object-to-create": "PlayerAttackSlash",
-								"layer": "\"Game\"",
-								"x": "Player.X - cos(mouseAngle) * PlayerGraphic.Width / 2",
-								"y": "Player.Y + clamp(sin(mouseAngle), -1, 0.5) * PlayerGraphic.Height / 2",
+								"layer": "\"IE\"",
+								"x": "Player.X",
+								"y": "Player.Y",
 								"create-hierarchy": false,
 								"template-name": "\"\""
 							}
 						},
 						{
-							"id": "set-angle",
-							"objectClass": "PlayerAttackSlash",
-							"sid": 973034667520448,
+							"id": "add-child",
+							"objectClass": "Player",
+							"sid": 772202680201318,
 							"parameters": {
-								"angle": "mouseAngle"
-							}
-						},
-						{
-							"id": "tween-one-property",
-							"objectClass": "PlayerAttackSlash",
-							"sid": 355873976731215,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "\"destroy\"",
-								"property": "offsetOpacity",
-								"end-value": "0",
-								"time": "0.3",
-								"ease": "default",
-								"destroy-on-complete": "yes",
-								"loop": "no",
-								"ping-pong": "no",
-								"repeat-count": "1"
-							}
-						},
-						{
-							"id": "set-animation",
-							"objectClass": "PlayerGraphic",
-							"sid": 616130808942149,
-							"parameters": {
-								"animation": "\"Attack\"",
-								"from": "beginning"
+								"child": "PlayerAttackSlash",
+								"transform-x": true,
+								"transform-y": true,
+								"transform-w": false,
+								"transform-h": false,
+								"transform-a": false,
+								"transform-o": false,
+								"transform-z-elevation": false,
+								"transform-visibility": false,
+								"destroy-with-parent": false
 							}
 						}
 					],
-					"sid": 515889790629025
+					"sid": 515889790629025,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-mirrored",
+									"objectClass": "PlayerGraphic",
+									"sid": 930384636071453
+								}
+							],
+							"actions": [
+								{
+									"id": "set-mirrored",
+									"objectClass": "PlayerAttackSlash",
+									"sid": 839008337871830,
+									"parameters": {
+										"state": "mirrored"
+									}
+								}
+							],
+							"sid": 930301357521754
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 813846509920286
+								}
+							],
+							"actions": [
+								{
+									"id": "set-mirrored",
+									"objectClass": "PlayerAttackSlash",
+									"sid": 703847966358490,
+									"parameters": {
+										"state": "not-mirrored"
+									}
+								}
+							],
+							"sid": 472444060371221
+						}
+					]
 				}
 			]
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "onTimer",
-					"objectClass": "PlayerAttackSlash",
-					"sid": 887582950137126,
-					"behaviorType": "InstanceTimer",
-					"parameters": {
-						"tag": "\"destroy\""
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "destroy",
-					"objectClass": "PlayerAttackSlash",
-					"sid": 777484354490656
-				}
-			],
-			"sid": 346295838702657
 		},
 		{
 			"eventType": "block",
