@@ -9,8 +9,36 @@
 			"name": "interactableUID",
 			"type": "number",
 			"desc": "",
-			"show": true,
+			"show": false,
 			"sid": 380799439933821
+		},
+		{
+			"name": "movingToPath",
+			"type": "boolean",
+			"desc": "",
+			"show": false,
+			"sid": 548404725935585
+		},
+		{
+			"name": "maxSpeed",
+			"type": "number",
+			"desc": "",
+			"show": false,
+			"sid": 212439743149401
+		},
+		{
+			"name": "tempVectorX",
+			"type": "number",
+			"desc": "",
+			"show": false,
+			"sid": 827399460982984
+		},
+		{
+			"name": "tempVectorY",
+			"type": "number",
+			"desc": "",
+			"show": false,
+			"sid": 449242309616604
 		}
 	],
 	"behaviorTypes": [
@@ -23,6 +51,16 @@
 			"behaviorId": "Platform",
 			"name": "Platform",
 			"sid": 233856430064935
+		},
+		{
+			"behaviorId": "Pathfinding",
+			"name": "Pathfinding",
+			"sid": 385170076645254
+		},
+		{
+			"behaviorId": "MasterPose_InstanceTimer",
+			"name": "InstanceTimer",
+			"sid": 694136975494559
 		}
 	],
 	"effectTypes": [],

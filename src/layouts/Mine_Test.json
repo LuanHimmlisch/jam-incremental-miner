@@ -122,72 +122,6 @@
 						"angle": 0,
 						"zElevation": 0
 					}
-				},
-				{
-					"type": "Player",
-					"properties": {
-						"initially-visible": false,
-						"initial-animation": "Animation 1",
-						"initial-frame": 0,
-						"enable-collisions": true,
-						"live-preview": false
-					},
-					"uid": 24,
-					"sid": 761088950910819,
-					"tags": "",
-					"instanceVariables": {
-						"interactableUID": 0
-					},
-					"behaviors": {
-						"8Direction": {
-							"properties": {
-								"max-speed": 1000,
-								"acceleration": 2000,
-								"deceleration": 1800,
-								"directions": "dir-8",
-								"set-angle": "no",
-								"allow-sliding": false,
-								"default-controls": false,
-								"enabled": false
-							}
-						},
-						"Platform": {
-							"properties": {
-								"max-speed": 1200,
-								"acceleration": 3000,
-								"deceleration": 3000,
-								"jump-strength": 4000,
-								"gravity": 9000,
-								"max-fall-speed": 3000,
-								"double-jump": true,
-								"jump-sustain": 0,
-								"default-controls": false,
-								"enabled": false
-							}
-						}
-					},
-					"instanceFolderItem": {
-						"sid": 761088950910819,
-						"expanded": true
-					},
-					"showing": true,
-					"locked": false,
-					"world": {
-						"x": 1536,
-						"y": 1024,
-						"width": 264,
-						"height": 96,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
 				}
 			],
 			"sid": 930204972676123,
@@ -426,10 +360,6 @@
 			},
 			{
 				"sid": 414935414617031,
-				"expanded": true
-			},
-			{
-				"sid": 761088950910819,
 				"expanded": true
 			},
 			{

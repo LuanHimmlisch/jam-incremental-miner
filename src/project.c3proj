@@ -85,6 +85,22 @@
 		},
 		{
 			"type": "behavior",
+			"id": "MasterPose_InstanceTimer",
+			"name": "Instance Timer",
+			"author": "Master Pose",
+			"bundled": false,
+			"version": "1.0.0",
+			"sdkVersion": 2
+		},
+		{
+			"type": "behavior",
+			"id": "Pathfinding",
+			"name": "Pathfinding",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "Platform",
 			"name": "Platform",
 			"author": "Scirra",
@@ -323,7 +339,7 @@
 		"renderingMode": "auto",
 		"anisotropicFiltering": "auto",
 		"zNear": 1,
-		"zFar": 10000,
+		"zFar": 20000,
 		"maxSpriteSheetSize": 4096,
 		"loaderStyle": "splash",
 		"preloadSounds": true,

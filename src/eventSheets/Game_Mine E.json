@@ -109,11 +109,18 @@
 							}
 						}
 					],
+					"actions": [],
+					"sid": 123022221961094,
+					"disabled": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
 					"actions": [
 						{
 							"id": "create-object",
 							"objectClass": "System",
-							"sid": 744274484007539,
+							"sid": 795635036620481,
 							"parameters": {
 								"object-to-create": "Player",
 								"layer": "\"Game\"",
@@ -122,14 +129,7 @@
 								"create-hierarchy": false,
 								"template-name": "\"\""
 							}
-						}
-					],
-					"sid": 123022221961094
-				},
-				{
-					"eventType": "block",
-					"conditions": [],
-					"actions": [
+						},
 						{
 							"id": "set-position",
 							"objectClass": "Player",
@@ -1590,7 +1590,17 @@
 											}
 										}
 									],
-									"actions": [],
+									"actions": [
+										{
+											"id": "log",
+											"objectClass": "Browser",
+											"sid": 898184096584089,
+											"parameters": {
+												"type": "log",
+												"message": "\"found\""
+											}
+										}
+									],
 									"sid": 325344128838854,
 									"children": [
 										{
@@ -1746,6 +1756,28 @@
 							]
 						}
 					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 184391876174970
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 325311361297014,
+							"parameters": {
+								"variable": "LookingForRope",
+								"value": "false"
+							}
+						}
+					],
+					"sid": 509837271545489
 				}
 			]
 		},
@@ -2960,10 +2992,10 @@
 			"actions": [
 				{
 					"callFunction": "Create 2D Player",
-					"sid": 319538779533533,
+					"sid": 275255998308735,
 					"parameters": [
-						"Player.X",
-						"Player.Y"
+						"976",
+						"2348"
 					]
 				},
 				{
@@ -3048,6 +3080,15 @@
 		{
 			"eventType": "block",
 			"conditions": [
+				{
+					"id": "is-boolean-instance-variable-set",
+					"objectClass": "Player",
+					"sid": 482681273861941,
+					"parameters": {
+						"instance-variable": "movingToPath"
+					},
+					"isInverted": true
+				},
 				{
 					"id": "is-boolean-instance-variable-set",
 					"objectClass": "Rope",
@@ -3539,6 +3580,18 @@
 											"customAction": "Refresh",
 											"objectClass": "DarknessTilemap",
 											"sid": 589341416054273
+										},
+										{
+											"id": "regenerate-region",
+											"objectClass": "Player",
+											"sid": 317699417100581,
+											"behaviorType": "Pathfinding",
+											"parameters": {
+												"start-x": "Player.X - Tilemap.TileWidth * 2",
+												"start-y": "Player.Y - Tilemap.TileHeight * 2",
+												"end-x": "Player.X + Tilemap.TileWidth * 2",
+												"end-y": "Player.Y + Tilemap.TileHeight * 2"
+											}
 										}
 									],
 									"sid": 485966032620505
@@ -3624,6 +3677,607 @@
 						}
 					],
 					"sid": 782312649560195
+				}
+			]
+		},
+		{
+			"eventType": "variable",
+			"name": "CallRopeProgress",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 111322398427096
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 431492747733019,
+					"parameters": {
+						"key": 90
+					}
+				}
+			],
+			"actions": [],
+			"sid": 769907680460049,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 723756971688717,
+							"parameters": {
+								"variable": "CallRopeProgress",
+								"value": "dt"
+							}
+						}
+					],
+					"sid": 795912170898018
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 198850167740016,
+							"parameters": {
+								"first-value": "CallRopeProgress",
+								"comparison": 4,
+								"second-value": "0.1"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Player",
+							"sid": 110796955012183,
+							"parameters": {
+								"instance-variable": "movingToPath"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Rope",
+							"sid": 967152354110501,
+							"parameters": {
+								"instance-variable": "active"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Player",
+							"sid": 460602175630959,
+							"parameters": {
+								"instance-variable": "movingToPath",
+								"value": "true"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "Player",
+							"sid": 771662948466258,
+							"behaviorType": "Platform",
+							"parameters": {
+								"state": "disabled"
+							}
+						}
+					],
+					"sid": 953967825837633,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 588134013391690,
+									"parameters": {
+										"first-value": "Rope.IID",
+										"comparison": 0,
+										"second-value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "find-path",
+									"objectClass": "Player",
+									"sid": 180212595201817,
+									"behaviorType": "Pathfinding",
+									"parameters": {
+										"x": "Rope.X",
+										"y": "Rope.Y - Player.Height"
+									}
+								}
+							],
+							"sid": 216265934269460
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 957009573741358
+								}
+							],
+							"actions": [
+								{
+									"id": "find-path",
+									"objectClass": "Player",
+									"sid": 384538642940229,
+									"behaviorType": "Pathfinding",
+									"parameters": {
+										"x": "Tilemap.TileToPositionX(Tilemap.PositionToTileX(Rope.X))",
+										"y": "Tilemap.TileToPositionY(Tilemap.PositionToTileY(Rope.Y))"
+									}
+								},
+								{
+									"id": "set-position",
+									"objectClass": "RopeDebugCast",
+									"sid": 993466725365593,
+									"parameters": {
+										"x": "Tilemap.TileToPositionX(Tilemap.PositionToTileX(Rope.X))",
+										"y": "Tilemap.TileToPositionY(Tilemap.PositionToTileY(Rope.Y))"
+									}
+								}
+							],
+							"sid": 744207508835091
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [],
+							"sid": 180972503776215
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-released",
+					"objectClass": "Keyboard",
+					"sid": 235420767244124,
+					"parameters": {
+						"key": 90
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 122938909466749,
+					"parameters": {
+						"variable": "CallRopeProgress",
+						"value": "0"
+					}
+				},
+				{
+					"id": "set-boolean-instvar",
+					"objectClass": "Player",
+					"sid": 530807294451651,
+					"parameters": {
+						"instance-variable": "movingToPath",
+						"value": "false"
+					}
+				},
+				{
+					"id": "set-enabled",
+					"objectClass": "Player",
+					"sid": 547778260166076,
+					"behaviorType": "Platform",
+					"parameters": {
+						"state": "enabled"
+					}
+				}
+			],
+			"sid": 220930007585680,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-moving-along-path",
+							"objectClass": "Player",
+							"sid": 590940763470290,
+							"behaviorType": "Pathfinding"
+						}
+					],
+					"actions": [
+						{
+							"id": "stop",
+							"objectClass": "Player",
+							"sid": 340709675154708,
+							"behaviorType": "Pathfinding"
+						}
+					],
+					"sid": 267333953730960
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-path-found",
+					"objectClass": "Player",
+					"sid": 439158808023491,
+					"behaviorType": "Pathfinding"
+				},
+				{
+					"id": "is-boolean-instance-variable-set",
+					"objectClass": "Player",
+					"sid": 386750010432074,
+					"parameters": {
+						"instance-variable": "movingToPath"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "move-along-path",
+					"objectClass": "Player",
+					"sid": 189992010325139,
+					"behaviorType": "Pathfinding"
+				}
+			],
+			"sid": 697051422190907
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-failed-to-find-path",
+					"objectClass": "Player",
+					"sid": 756583883696627,
+					"behaviorType": "Pathfinding"
+				},
+				{
+					"id": "is-boolean-instance-variable-set",
+					"objectClass": "Player",
+					"sid": 504903784959909,
+					"parameters": {
+						"instance-variable": "movingToPath"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-boolean-instvar",
+					"objectClass": "Player",
+					"sid": 955446084088041,
+					"parameters": {
+						"instance-variable": "movingToPath",
+						"value": "false"
+					}
+				},
+				{
+					"id": "set-enabled",
+					"objectClass": "Player",
+					"sid": 358054792558641,
+					"behaviorType": "Platform",
+					"parameters": {
+						"state": "enabled"
+					}
+				}
+			],
+			"sid": 777008368312188
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "Player",
+					"sid": 404390618194822
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Player",
+					"sid": 671907172925678,
+					"parameters": {
+						"instance-variable": "maxSpeed",
+						"value": "Self.Platform.MaxSpeed"
+					}
+				}
+			],
+			"sid": 601221846812078
+		},
+		{
+			"aceType": "action",
+			"aceName": "Apply Impulse",
+			"objectClass": "Player",
+			"functionDescription": "",
+			"functionCategory": "Platform",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "vectorX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 759224104049505
+				},
+				{
+					"name": "vectorY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 904136920615618
+				}
+			],
+			"eventType": "custom-ace-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-max-speed",
+					"objectClass": "Player",
+					"sid": 577764245448187,
+					"behaviorType": "Platform",
+					"parameters": {
+						"max-speed": "max(Self.maxSpeed, abs(vectorX), abs(vectorY))"
+					}
+				},
+				{
+					"id": "set-vector-x",
+					"objectClass": "Player",
+					"sid": 755780375226381,
+					"behaviorType": "Platform",
+					"parameters": {
+						"vector-x": "Self.Platform.VectorX + vectorX"
+					}
+				},
+				{
+					"id": "set-vector-y",
+					"objectClass": "Player",
+					"sid": 653818668478674,
+					"behaviorType": "Platform",
+					"parameters": {
+						"vector-y": "Self.Platform.VectorY + vectorY"
+					}
+				},
+				{
+					"id": "startTimer",
+					"objectClass": "Player",
+					"sid": 644653964535794,
+					"behaviorType": "InstanceTimer",
+					"parameters": {
+						"duration": "0.1",
+						"tag": "\"temp-vector-check\"",
+						"type": "oneOff",
+						"useSystemDt": "object"
+					}
+				}
+			],
+			"sid": 835650298401930
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "onTimer",
+					"objectClass": "Player",
+					"sid": 973623145255500,
+					"behaviorType": "InstanceTimer",
+					"parameters": {
+						"tag": "\"temp-vector-check\""
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 126171207980294,
+					"parameters": {
+						"instance-variable": "maxSpeed",
+						"comparison": 1,
+						"value": "Self.Platform.MaxSpeed"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-max-speed",
+					"objectClass": "Player",
+					"sid": 993790147899871,
+					"behaviorType": "Platform",
+					"parameters": {
+						"max-speed": "Self.maxSpeed"
+					}
+				}
+			],
+			"sid": 591525971690650
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-arrived",
+					"objectClass": "Player",
+					"sid": 928748921871231,
+					"behaviorType": "Pathfinding"
+				},
+				{
+					"id": "is-boolean-instance-variable-set",
+					"objectClass": "Player",
+					"sid": 548873853296028,
+					"parameters": {
+						"instance-variable": "movingToPath"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 880677013674596,
+					"disabled": true,
+					"parameters": {
+						"variable": "CallRopeProgress",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 128873710625195,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Player",
+							"sid": 134363296925428,
+							"parameters": {
+								"instance-variable": "movingToPath",
+								"value": "false"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "Player",
+							"sid": 329763469797653,
+							"disabled": true,
+							"behaviorType": "Pathfinding",
+							"parameters": {
+								"set": "disabled"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "Player",
+							"sid": 351145259162253,
+							"disabled": true,
+							"behaviorType": "Platform",
+							"parameters": {
+								"state": "enabled"
+							}
+						},
+						{
+							"customAction": "Apply Impulse",
+							"objectClass": "Player",
+							"sid": 322351085582356,
+							"disabled": true,
+							"parameters": [
+								"0",
+								"-2000"
+							]
+						}
+					],
+					"sid": 835574055018973
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Rope",
+							"sid": 972458158615436,
+							"parameters": {
+								"instance-variable": "active"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "Delete Rope",
+							"sid": 972176563651309,
+							"parameters": [
+								"Rope.UID"
+							]
+						}
+					],
+					"sid": 654620221968431,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 787478561450472,
+									"parameters": {
+										"first-value": "Rope.IID",
+										"comparison": 0,
+										"second-value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-vector-x",
+									"objectClass": "Player",
+									"sid": 673251158809165,
+									"behaviorType": "Platform",
+									"parameters": {
+										"vector-x": "0"
+									}
+								},
+								{
+									"id": "set-vector-y",
+									"objectClass": "Player",
+									"sid": 837533883970951,
+									"behaviorType": "Platform",
+									"parameters": {
+										"vector-y": "0"
+									}
+								},
+								{
+									"customAction": "Apply Impulse",
+									"objectClass": "Player",
+									"sid": 912459188847382,
+									"parameters": [
+										"-3000",
+										"-4000"
+									]
+								},
+								{
+									"id": "reset-eventvar",
+									"objectClass": "System",
+									"sid": 910577422212728,
+									"parameters": {
+										"variable": "MineStarted"
+									}
+								},
+								{
+									"id": "reset-eventvar",
+									"objectClass": "System",
+									"sid": 536557521558480,
+									"disabled": true,
+									"parameters": {
+										"variable": "MineStartX"
+									}
+								},
+								{
+									"id": "reset-eventvar",
+									"objectClass": "System",
+									"sid": 337201392612965,
+									"disabled": true,
+									"parameters": {
+										"variable": "MineStartY"
+									}
+								}
+							],
+							"sid": 695982480553303
+						}
+					]
 				}
 			]
 		}

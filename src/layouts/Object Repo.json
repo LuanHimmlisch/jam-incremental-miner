@@ -105,7 +105,11 @@
 					"sid": 166409311622476,
 					"tags": "",
 					"instanceVariables": {
-						"interactableUID": 0
+						"interactableUID": 0,
+						"movingToPath": false,
+						"maxSpeed": 0,
+						"tempVectorX": 0,
+						"tempVectorY": 0
 					},
 					"behaviors": {
 						"8Direction": {
@@ -133,6 +137,24 @@
 								"default-controls": false,
 								"enabled": false
 							}
+						},
+						"Pathfinding": {
+							"properties": {
+								"cell-size": 32,
+								"cell-border": -1,
+								"obstacles": "solids",
+								"max-speed": 200000,
+								"acceleration": 1000000,
+								"deceleration": 0,
+								"rotate-speed": 1000000,
+								"rotate-object": false,
+								"diagonals": true,
+								"direct-movement": "to-destination",
+								"enabled": true
+							}
+						},
+						"InstanceTimer": {
+							"properties": {}
 						}
 					},
 					"instanceFolderItem": {
