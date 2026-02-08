@@ -236,7 +236,10 @@
 					"uid": 27,
 					"sid": 660164392865988,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"tileX": 0,
+						"tileY": 0
+					},
 					"behaviors": {},
 					"instanceFolderItem": {
 						"sid": 660164392865988,
@@ -262,7 +265,7 @@
 					}
 				},
 				{
-					"type": "debug",
+					"type": "RopeDebugCast",
 					"properties": {
 						"initially-visible": true,
 						"initial-animation": "Animation 1",
@@ -274,7 +277,16 @@
 					"sid": 750372942609961,
 					"tags": "",
 					"instanceVariables": {},
-					"behaviors": {},
+					"behaviors": {
+						"LineOfSight": {
+							"properties": {
+								"obstacles": "solids",
+								"range": 100000,
+								"cone-of-view": 360,
+								"use-collision-cells": true
+							}
+						}
+					},
 					"instanceFolderItem": {
 						"sid": 750372942609961,
 						"expanded": true

@@ -25,6 +25,34 @@
 			"desc": "",
 			"show": true,
 			"sid": 999908971698387
+		},
+		{
+			"name": "intersected",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 459742110703214
+		},
+		{
+			"name": "tileX",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 902307537924696
+		},
+		{
+			"name": "tileY",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 689923742195884
+		},
+		{
+			"name": "destroyed",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 595527571159636
 		}
 	],
 	"behaviorTypes": [

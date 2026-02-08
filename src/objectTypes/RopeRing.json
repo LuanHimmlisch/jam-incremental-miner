@@ -4,7 +4,22 @@
 	"sid": 153868357897058,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "tileX",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 503080220254460
+		},
+		{
+			"name": "tileY",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 931147911160498
+		}
+	],
 	"behaviorTypes": [],
 	"effectTypes": [],
 	"animations": {

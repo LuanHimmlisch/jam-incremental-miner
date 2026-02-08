@@ -443,7 +443,11 @@
 					"instanceVariables": {
 						"active": false,
 						"lastX": 0,
-						"lastY": 0
+						"lastY": 0,
+						"intersected": false,
+						"tileX": 0,
+						"tileY": 0,
+						"destroyed": false
 					},
 					"behaviors": {
 						"LineOfSight": {
@@ -490,7 +494,10 @@
 					"uid": 26,
 					"sid": 810898497511413,
 					"tags": "",
-					"instanceVariables": {},
+					"instanceVariables": {
+						"tileX": 0,
+						"tileY": 0
+					},
 					"behaviors": {},
 					"instanceFolderItem": {
 						"sid": 810898497511413,

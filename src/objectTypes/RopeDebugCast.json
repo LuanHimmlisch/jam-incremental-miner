@@ -1,11 +1,17 @@
 {
-	"name": "debug",
+	"name": "RopeDebugCast",
 	"plugin-id": "Sprite",
 	"sid": 771659327058789,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
-	"behaviorTypes": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "LOS",
+			"name": "LineOfSight",
+			"sid": 313657411559122
+		}
+	],
 	"effectTypes": [],
 	"animations": {
 		"items": [
