@@ -1,0 +1,52 @@
+{
+	"name": "RopeRing",
+	"plugin-id": "Sprite",
+	"sid": 153868357897058,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 33,
+						"height": 33,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 9927040,
+						"collisionPoly": {
+							"points": [
+								0.030303030303030304,
+								0,
+								0.9696969696969697,
+								0,
+								0.9696969696969697,
+								0.9696969696969697,
+								0.030303030303030304,
+								0.9696969696969697
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 882707439822271,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

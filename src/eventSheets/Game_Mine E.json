@@ -6,6 +6,46 @@
 			"includeSheet": "Game E"
 		},
 		{
+			"eventType": "variable",
+			"name": "LowestYPoint",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 798246178874186
+		},
+		{
+			"eventType": "variable",
+			"name": "MineStartX",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 569138083416013
+		},
+		{
+			"eventType": "variable",
+			"name": "MineStartY",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 918135746226595
+		},
+		{
+			"eventType": "variable",
+			"name": "MineStarted",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 596456859460892
+		},
+		{
 			"functionName": "Create 2D Player",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -152,7 +192,7 @@
 			]
 		},
 		{
-			"functionName": "HasTileAt",
+			"functionName": "Create Rope",
 			"functionDescription": "",
 			"functionCategory": "",
 			"functionReturnType": "none",
@@ -160,33 +200,932 @@
 			"functionIsAsync": false,
 			"functionParameters": [
 				{
-					"name": "x",
+					"name": "anchorX",
 					"type": "number",
 					"initialValue": "0",
 					"comment": "",
-					"sid": 639514019249724
+					"sid": 124461715431216
 				},
 				{
-					"name": "y",
+					"name": "anchorY",
 					"type": "number",
 					"initialValue": "0",
 					"comment": "",
-					"sid": 968701432569101
+					"sid": 553562734048969
 				}
 			],
 			"eventType": "function-block",
 			"conditions": [],
-			"actions": [
+			"actions": [],
+			"sid": 297952812242273,
+			"children": [
 				{
-					"id": "set-function-return-value",
-					"objectClass": "Functions",
-					"sid": 977846775028437,
-					"parameters": {
-						"value": "Tilemap.TileAt(x, y)"
-					}
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Rope",
+							"sid": 952745889746558,
+							"parameters": {
+								"instance-variable": "active"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Rope",
+							"sid": 317457284611941,
+							"parameters": {
+								"instance-variable": "active",
+								"value": "false"
+							}
+						},
+						{
+							"id": "set-angle-toward-position",
+							"objectClass": "Rope",
+							"sid": 424737996532425,
+							"parameters": {
+								"x": "anchorX",
+								"y": "anchorY"
+							}
+						},
+						{
+							"id": "set-width",
+							"objectClass": "Rope",
+							"sid": 511655605593661,
+							"parameters": {
+								"width": "distance(Self.X, Self.Y, anchorX, anchorY)"
+							}
+						}
+					],
+					"sid": 509060248496572
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 539045462890016,
+							"parameters": {
+								"object-to-create": "Rope",
+								"layer": "\"Game\"",
+								"x": "anchorX",
+								"y": "anchorY",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Rope",
+							"sid": 772042740077075,
+							"parameters": {
+								"instance-variable": "active",
+								"value": "true"
+							}
+						},
+						{
+							"id": "move-to-object",
+							"objectClass": "Rope",
+							"sid": 602067735515445,
+							"parameters": {
+								"where": "behind",
+								"object": "PlayerGraphic"
+							}
+						}
+					],
+					"sid": 670189129802557
+				}
+			]
+		},
+		{
+			"functionName": "Try Rope Anchor",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "lastX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 209542179062367
+				},
+				{
+					"name": "lastY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 573730352058479
 				}
 			],
-			"sid": 365274105551743
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 645127362235099,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "prevX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 112501418687472
+				},
+				{
+					"eventType": "variable",
+					"name": "prevY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 256487538461610
+				},
+				{
+					"eventType": "variable",
+					"name": "tileX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 493762207630561
+				},
+				{
+					"eventType": "variable",
+					"name": "tileY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 297542757738926
+				},
+				{
+					"eventType": "variable",
+					"name": "tilePosX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 872150855333649
+				},
+				{
+					"eventType": "variable",
+					"name": "tilePosY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 518625022963538
+				},
+				{
+					"eventType": "variable",
+					"name": "found",
+					"type": "boolean",
+					"initialValue": "true",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 908489737681105
+				},
+				{
+					"eventType": "variable",
+					"name": "anchorX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 896886605369970
+				},
+				{
+					"eventType": "variable",
+					"name": "anchorY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 879200457511440
+				},
+				{
+					"eventType": "variable",
+					"name": "posXPreference",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 515282518456094
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Rope",
+							"sid": 983848319243404,
+							"parameters": {
+								"instance-variable": "active"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 699118713625423,
+							"parameters": {
+								"variable": "prevX",
+								"value": "Rope.X"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 505441440942572,
+							"parameters": {
+								"variable": "prevY",
+								"value": "Rope.Y"
+							}
+						}
+					],
+					"sid": 931298694999514
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 427725641569455,
+							"parameters": {
+								"variable": "tileX",
+								"value": "Tilemap.PositionToTileX(Player.X)"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 280377970390545,
+							"parameters": {
+								"variable": "tileY",
+								"value": "Tilemap.PositionToTileY(Player.Y)"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 185892731618333,
+							"disabled": true,
+							"parameters": {
+								"variable": "tilePosX",
+								"value": "Tilemap.TileToPositionX(tileX)"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 198713641844556,
+							"disabled": true,
+							"parameters": {
+								"variable": "tilePosY",
+								"value": "Tilemap.TileToPositionY(tileY)"
+							}
+						}
+					],
+					"sid": 230991146739554
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 528564529107369,
+							"parameters": {
+								"variable": "prevX",
+								"comparison": 4,
+								"value": "lastX"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 443051357502579,
+							"parameters": {
+								"variable": "posXPreference",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 805504824334069
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 807690197036221
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 142671206564336,
+							"parameters": {
+								"variable": "posXPreference",
+								"value": "-1"
+							}
+						}
+					],
+					"sid": 342159798943137
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 324186929782700,
+							"parameters": {
+								"first-value": "Tilemap.TileAt(tileX, tileY - 1)",
+								"comparison": 5,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 517121677817251,
+							"parameters": {
+								"variable": "anchorX",
+								"value": "Tilemap.TileToPositionX(tileX)"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 191813693562684,
+							"parameters": {
+								"variable": "anchorY",
+								"value": "Tilemap.TileToPositionY(tileY - 1)"
+							}
+						}
+					],
+					"sid": 427880945864981
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 355430772149678
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 270831762430656,
+							"parameters": {
+								"first-value": "Tilemap.TileAt(tileX + posXPreference, tileY)",
+								"comparison": 5,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 490036510120001,
+							"parameters": {
+								"variable": "anchorX",
+								"value": "Tilemap.TileToPositionX(tileX + posXPreference)"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 149847094522611,
+							"parameters": {
+								"variable": "anchorY",
+								"value": "Tilemap.TileToPositionY(tileY)"
+							}
+						}
+					],
+					"sid": 141609415486238
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 602490668456997
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 663690254138719,
+							"parameters": {
+								"first-value": "Tilemap.TileAt(tileX - posXPreference, tileY)",
+								"comparison": 5,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 603998261332862,
+							"parameters": {
+								"variable": "anchorX",
+								"value": "Tilemap.TileToPositionX(tileX - posXPreference)"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 892104226798680,
+							"parameters": {
+								"variable": "anchorY",
+								"value": "Tilemap.TileToPositionY(tileY)"
+							}
+						}
+					],
+					"sid": 975545570632404
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 951479079187154
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 696857146704077,
+							"parameters": {
+								"variable": "found",
+								"value": "false"
+							}
+						}
+					],
+					"sid": 619317061319429
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 623939400514466,
+							"parameters": {
+								"variable": "found"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 977975304620989,
+							"parameters": {
+								"variable": "LowestYPoint",
+								"value": "tileY"
+							}
+						},
+						{
+							"id": "clear",
+							"objectClass": "ArrayTemp",
+							"sid": 491564741689006,
+							"disabled": true,
+							"parameters": {
+								"value": "0"
+							}
+						},
+						{
+							"id": "set-size",
+							"objectClass": "ArrayTemp",
+							"sid": 700080319105042,
+							"disabled": true,
+							"parameters": {
+								"width": "4",
+								"height": "2",
+								"depth": "0"
+							}
+						}
+					],
+					"sid": 697255922429929,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "nearestDistance",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 428194542649273
+						},
+						{
+							"eventType": "variable",
+							"name": "nearestPointX",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 443529584846383
+						},
+						{
+							"eventType": "variable",
+							"name": "nearestPointY",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 663491678088206
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "- / +"
+								},
+								{
+									"id": "set-at-xy",
+									"objectClass": "ArrayTemp",
+									"sid": 318577281472029,
+									"parameters": {
+										"x": "0",
+										"y": "0",
+										"value": "anchorX - Tilemap.TileWidth / 2"
+									}
+								},
+								{
+									"id": "set-at-xy",
+									"objectClass": "ArrayTemp",
+									"sid": 961490966219745,
+									"parameters": {
+										"x": "0",
+										"y": "1",
+										"value": "anchorY + Tilemap.TileHeight / 2"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "- / -"
+								},
+								{
+									"id": "set-at-xy",
+									"objectClass": "ArrayTemp",
+									"sid": 862586563267596,
+									"parameters": {
+										"x": "1",
+										"y": "0",
+										"value": "anchorX - Tilemap.TileWidth / 2"
+									}
+								},
+								{
+									"id": "set-at-xy",
+									"objectClass": "ArrayTemp",
+									"sid": 607054937259348,
+									"parameters": {
+										"x": "1",
+										"y": "1",
+										"value": "anchorY - Tilemap.TileHeight / 2"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "+ / +"
+								},
+								{
+									"id": "set-at-xy",
+									"objectClass": "ArrayTemp",
+									"sid": 707297523695989,
+									"parameters": {
+										"x": "2",
+										"y": "0",
+										"value": "anchorX + Tilemap.TileWidth / 2"
+									}
+								},
+								{
+									"id": "set-at-xy",
+									"objectClass": "ArrayTemp",
+									"sid": 357726068148760,
+									"parameters": {
+										"x": "2",
+										"y": "1",
+										"value": "anchorY + Tilemap.TileHeight / 2"
+									}
+								},
+								{
+									"type": "comment",
+									"text": "+ / -"
+								},
+								{
+									"id": "set-at-xy",
+									"objectClass": "ArrayTemp",
+									"sid": 679948800106762,
+									"parameters": {
+										"x": "3",
+										"y": "0",
+										"value": "anchorX + Tilemap.TileWidth / 2"
+									}
+								},
+								{
+									"id": "set-at-xy",
+									"objectClass": "ArrayTemp",
+									"sid": 682882592806857,
+									"parameters": {
+										"x": "3",
+										"y": "1",
+										"value": "anchorY - Tilemap.TileHeight / 2"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 533463557827937,
+									"disabled": true,
+									"parameters": {
+										"variable": "nearestDistance",
+										"value": "Infinity"
+									}
+								}
+							],
+							"sid": 863382252687972,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 709723078783651,
+											"parameters": {
+												"name": "\"points\"",
+												"start-index": "0",
+												"end-index": "ArrayTemp.Width - 1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 581577292994779,
+									"children": [
+										{
+											"eventType": "variable",
+											"name": "dist",
+											"type": "number",
+											"initialValue": "0",
+											"comment": "",
+											"isStatic": false,
+											"isConstant": false,
+											"sid": 160201266839262
+										},
+										{
+											"eventType": "variable",
+											"name": "pointX",
+											"type": "number",
+											"initialValue": "0",
+											"comment": "",
+											"isStatic": false,
+											"isConstant": false,
+											"sid": 611330726510336
+										},
+										{
+											"eventType": "variable",
+											"name": "pointY",
+											"type": "number",
+											"initialValue": "0",
+											"comment": "",
+											"isStatic": false,
+											"isConstant": false,
+											"sid": 981567424128628
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 578073821269656,
+													"parameters": {
+														"variable": "pointX",
+														"value": "ArrayTemp.At(loopindex, 0)"
+													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 661158821831476,
+													"parameters": {
+														"variable": "pointY",
+														"value": "ArrayTemp.At(loopindex, 1)"
+													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 261594985057644,
+													"parameters": {
+														"variable": "dist",
+														"value": "distance(lastX, lastY, pointX, pointY)"
+													}
+												}
+											],
+											"sid": 400480689921237
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 571052451240642,
+													"parameters": {
+														"variable": "dist",
+														"comparison": 2,
+														"value": "nearestDistance"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 171948441702061,
+													"parameters": {
+														"object-to-create": "debug",
+														"layer": "\"Game\"",
+														"x": "pointX",
+														"y": "pointY",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 779605975879873,
+													"parameters": {
+														"variable": "nearestDistance",
+														"value": "dist"
+													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 121480679622376,
+													"parameters": {
+														"variable": "nearestPointX",
+														"value": "pointX"
+													}
+												},
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 368348679341067,
+													"parameters": {
+														"variable": "nearestPointY",
+														"value": "pointY"
+													}
+												},
+												{
+													"id": "set-position",
+													"objectClass": "debug",
+													"sid": 395029433855835,
+													"disabled": true,
+													"parameters": {
+														"x": "pointX",
+														"y": "pointY"
+													}
+												}
+											],
+											"sid": 388911972148374
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 212997662072915,
+											"disabled": true,
+											"parameters": {
+												"variable": "anchorX",
+												"value": "clamp(nearestPointX, tilePosX - Tilemap.TileWidth / 2  + 1, tilePosX + Tilemap.TileWidth / 2 - 1)"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 303196023179055,
+											"disabled": true,
+											"parameters": {
+												"variable": "anchorY",
+												"value": "clamp(nearestPointY, tilePosY - Tilemap.TileHeight / 2 + 1, tilePosY + Tilemap.TileHeight / 2 - 1)"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 736770672625888,
+											"parameters": {
+												"variable": "anchorX",
+												"value": "nearestPointX"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 411612960926814,
+											"parameters": {
+												"variable": "anchorY",
+												"value": "nearestPointY"
+											}
+										}
+									],
+									"sid": 294281209727287
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-overlapping-point",
+											"objectClass": "System",
+											"sid": 658789179313643,
+											"parameters": {
+												"object": "RopeRing",
+												"x": "anchorX",
+												"y": "anchorY"
+											},
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 483797105072944,
+											"parameters": {
+												"object-to-create": "RopeRing",
+												"layer": "\"Game\"",
+												"x": "anchorX",
+												"y": "anchorY",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"callFunction": "Create Rope",
+											"sid": 870814580413077,
+											"parameters": [
+												"anchorX",
+												"anchorY"
+											]
+										}
+									],
+									"sid": 325344128838854
+								}
+							]
+						}
+					]
+				}
+			]
 		},
 		{
 			"aceType": "action",
@@ -1052,6 +1991,90 @@
 			]
 		},
 		{
+			"functionName": "Delete Rope",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "uid",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 270202910084227
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 921608604468273,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "prevIndex",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 480172242286094
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-by-unique-id",
+							"objectClass": "Rope",
+							"sid": 637680085307406,
+							"parameters": {
+								"unique-id": "uid"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 190891550197582,
+							"parameters": {
+								"variable": "prevIndex",
+								"value": "Rope.IID - 1"
+							}
+						}
+					],
+					"sid": 906215375659620
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-nth-instance",
+							"objectClass": "System",
+							"sid": 444746746018272,
+							"parameters": {
+								"object": "Rope",
+								"instance": "prevIndex"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Rope",
+							"sid": 142798791687215,
+							"parameters": {
+								"instance-variable": "active",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 829872837939363
+				}
+			]
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -1068,6 +2091,15 @@
 						"Player.X",
 						"Player.Y"
 					]
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 621966748411289,
+					"parameters": {
+						"variable": "LowestYPoint",
+						"value": "Tilemap.PositionToTileY(Player.Y)"
+					}
 				},
 				{
 					"id": "set-layout-scale",
@@ -1103,9 +2135,162 @@
 					"customAction": "Refresh",
 					"objectClass": "DarknessTilemap",
 					"sid": 291900900228022
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 575997252051838,
+					"parameters": {
+						"variable": "MineStartX",
+						"value": "RopeRing.X"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 754449837785507,
+					"parameters": {
+						"variable": "MineStartY",
+						"value": "RopeRing.Y"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 167318115399424,
+					"parameters": {
+						"variable": "MineStarted",
+						"value": "false"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "Rope",
+					"sid": 658873918238822
 				}
 			],
 			"sid": 166041054666914
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 277104782001052,
+					"parameters": {
+						"key": 32
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "Try Rope Anchor",
+					"sid": 856563453228425,
+					"parameters": [
+						"0",
+						"0"
+					]
+				}
+			],
+			"sid": 143464733137297
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-boolean-instance-variable-set",
+					"objectClass": "Rope",
+					"sid": 679836210211897,
+					"parameters": {
+						"instance-variable": "active"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 637253041747203,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "has-los-to-object",
+							"objectClass": "Rope",
+							"sid": 953450408193951,
+							"behaviorType": "LineOfSight",
+							"parameters": {
+								"object": "Player",
+								"image-point": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Rope",
+							"sid": 166121877460757,
+							"parameters": {
+								"instance-variable": "lastX",
+								"value": "Self.LineOfSight.HitX"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Rope",
+							"sid": 189591842710256,
+							"parameters": {
+								"instance-variable": "lastY",
+								"value": "Self.LineOfSight.HitY"
+							}
+						}
+					],
+					"sid": 217205315168136
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 110211113829224
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "Try Rope Anchor",
+							"sid": 933677361397708,
+							"parameters": [
+								"Rope.lastX",
+								"Rope.lastY"
+							]
+						}
+					],
+					"sid": 362631421907039
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "Rope",
+					"sid": 884796843384897,
+					"parameters": {
+						"object": "Tilemap"
+					}
+				},
+				{
+					"id": "is-boolean-instance-variable-set",
+					"objectClass": "Rope",
+					"sid": 873421583608149,
+					"parameters": {
+						"instance-variable": "active"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 951725921753882
 		},
 		{
 			"eventType": "block",
@@ -1126,7 +2311,144 @@
 					}
 				}
 			],
-			"sid": 544802991966155
+			"sid": 544802991966155,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Rope",
+							"sid": 897762840581970,
+							"parameters": {
+								"instance-variable": "active"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-angle-toward-position",
+							"objectClass": "Rope",
+							"sid": 827641121461151,
+							"parameters": {
+								"x": "Player.X",
+								"y": "Player.Y"
+							}
+						},
+						{
+							"id": "set-width",
+							"objectClass": "Rope",
+							"sid": 530874725152775,
+							"parameters": {
+								"width": "distance(Self.X, Self.Y, Player.X, Player.Y)"
+							}
+						}
+					],
+					"sid": 938033643862719
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 736722382552072,
+							"parameters": {
+								"variable": "MineStarted"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 832852824980477,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 825062657908773,
+									"disabled": true,
+									"parameters": {
+										"first-value": "Tilemap.PositionToTileY(Player.Y)",
+										"comparison": 4,
+										"second-value": "LowestYPoint"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "Try Rope Anchor",
+									"sid": 421998030881738,
+									"disabled": true,
+									"parameters": [
+										"0",
+										"0"
+									]
+								}
+							],
+							"sid": 906495655203178
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 939519890514518
+						}
+					],
+					"actions": [],
+					"sid": 189346309592545,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-x",
+									"objectClass": "Player",
+									"sid": 830771264262323,
+									"parameters": {
+										"comparison": 4,
+										"x-co-ordinate": "MineStartX"
+									}
+								},
+								{
+									"id": "compare-y",
+									"objectClass": "Player",
+									"sid": 128097828051910,
+									"parameters": {
+										"comparison": 4,
+										"y-co-ordinate": "MineStartY"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 531746428245662,
+									"parameters": {
+										"variable": "MineStarted",
+										"value": "true"
+									}
+								},
+								{
+									"callFunction": "Create Rope",
+									"sid": 472071354580296,
+									"parameters": [
+										"MineStartX + 1",
+										"MineStartY + 1"
+									]
+								}
+							],
+							"sid": 300292664970705
+						}
+					]
+				}
+			]
 		},
 		{
 			"eventType": "block",
