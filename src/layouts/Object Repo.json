@@ -109,7 +109,9 @@
 						"movingToPath": false,
 						"maxSpeed": 0,
 						"tempVectorX": 0,
-						"tempVectorY": 0
+						"tempVectorY": 0,
+						"targetTileAttackX": 0,
+						"targetTileAttackY": 0
 					},
 					"behaviors": {
 						"8Direction": {

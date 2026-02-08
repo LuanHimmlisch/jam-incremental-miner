@@ -39,6 +39,20 @@
 			"desc": "",
 			"show": false,
 			"sid": 449242309616604
+		},
+		{
+			"name": "targetTileAttackX",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 940962300893058
+		},
+		{
+			"name": "targetTileAttackY",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 118480081235529
 		}
 	],
 	"behaviorTypes": [

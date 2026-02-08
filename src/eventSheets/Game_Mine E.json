@@ -1487,15 +1487,6 @@
 												"variable": "tileY",
 												"value": "Tilemap.PositionToTileY(posY)"
 											}
-										},
-										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 276453954660615,
-											"parameters": {
-												"variable": "cooldownName",
-												"value": "\"tile-collision:\"&tileX&\",\"&tileY"
-											}
 										}
 									],
 									"sid": 567681403440926
@@ -1503,6 +1494,26 @@
 								{
 									"eventType": "block",
 									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 438186105908979,
+											"parameters": {
+												"variable": "tileX",
+												"comparison": 0,
+												"value": "Player.targetTileAttackX"
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 207141068200785,
+											"parameters": {
+												"variable": "tileY",
+												"comparison": 0,
+												"value": "Player.targetTileAttackY"
+											}
+										},
 										{
 											"id": "pick-overlapping-point",
 											"objectClass": "System",
@@ -1538,6 +1549,15 @@
 										}
 									],
 									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 519104106906677,
+											"parameters": {
+												"variable": "cooldownName",
+												"value": "\"tile-collision:\"&tileX&\",\"&tileY"
+											}
+										},
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",

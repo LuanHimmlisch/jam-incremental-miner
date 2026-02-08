@@ -287,32 +287,6 @@
 			"sid": 251920656655671,
 			"children": [
 				{
-					"eventType": "variable",
-					"name": "mouseAngle",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": false,
-					"sid": 122604749062497
-				},
-				{
-					"eventType": "block",
-					"conditions": [],
-					"actions": [
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 343955463006345,
-							"parameters": {
-								"variable": "mouseAngle",
-								"value": "angle(Mouse.X, Mouse.Y, Player.X, Player.Y) - 180"
-							}
-						}
-					],
-					"sid": 524035526038451
-				},
-				{
 					"eventType": "block",
 					"conditions": [],
 					"actions": [
@@ -344,6 +318,24 @@
 								"transform-z-elevation": false,
 								"transform-visibility": false,
 								"destroy-with-parent": false
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 667623042546440,
+							"parameters": {
+								"instance-variable": "targetTileAttackX",
+								"value": "clamp(\n    Tilemap.PositionToTileX(Mouse.X),\n    Tilemap.PositionToTileX(Player.X) - 1, \n    Tilemap.PositionToTileX(Player.X) + 1\n)"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Player",
+							"sid": 432821740108401,
+							"parameters": {
+								"instance-variable": "targetTileAttackY",
+								"value": "clamp(\r\n    Tilemap.PositionToTileY(Mouse.Y),\r\n    Tilemap.PositionToTileY(Player.Y) - 1, \r\n    Tilemap.PositionToTileY(Player.Y) + 1\r\n)"
 							}
 						}
 					],
